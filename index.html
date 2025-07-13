@@ -56,28 +56,24 @@
             <li><a href="#" class="text-red-600 hover:text-red-800 transition duration-300 dark:text-red-400 dark:hover:text-red-300">Business</a></li>
         </ul>
 
-        <!-- In your header section - Replace just the theme toggle part -->
 <div class="flex items-center space-x-4">
-    <!-- Theme Toggle Button -->
+
     <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300">
-        <!-- Light Icon (sun) -->
         <svg id="theme-toggle-light-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325 5.325l-.707.707M6.343 6.343l-.707-.707m12.728 0l-.707-.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
         </svg>
-        <!-- Dark Icon (moon) -->
         <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
         </svg>
     </button>
     
-    <!-- Keep your existing Sign In and Join buttons -->
     <button class="text-gray-700 hover:text-green-600 font-medium transition duration-300 dark:text-gray-200 dark:hover:text-green-400">Sign In</button>
     <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300 shadow-md">Join</button>
 </div>
     </nav>
 </header>
 
-    <!-- Hero Section with Video Background -->
+
     <section class="relative text-white py-24 md:py-32 flex items-center justify-center min-h-screen-1/2 mt-16 overflow-hidden">
         <video autoplay loop muted playsinline class="video-background">
             <source src="background.mp4" type="video/mp4">
@@ -108,177 +104,607 @@
             </div>
         </div>
     </section>
-
-    <!-- Categories Section -->
-    <section class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center dark:text-gray-100">Tech Services Categories</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Web Development -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Web Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Custom websites, web applications, and e-commerce solutions.</p>
-                </div>
-                
-                <!-- Mobile App Development -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Mobile App Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300">iOS and Android apps built with native or cross-platform technologies.</p>
-                </div>
-                
-                <!-- Software Development -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572-1.065c-.426-1.756-2.924-1.756-3.35 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Software Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Custom software solutions tailored to your business needs.</p>
-                </div>
-                
-                <!-- WordPress/Shopify/Wix -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">CMS Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300">WordPress, Shopify, Wix and other CMS solutions.</p>
-                </div>
-                
-                <!-- Bug Fixing / Debugging -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Bug Fixing</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Debugging and fixing issues in your existing applications.</p>
-                </div>
-                
-                <!-- AI & Machine Learning -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">AI & ML</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Artificial Intelligence and Machine Learning solutions.</p>
-                </div>
-                
-                <!-- Data Science & Analytics -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Data Science</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Data analysis, visualization, and predictive modeling.</p>
-                </div>
-                
-                <!-- Game Development -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div class="text-green-600 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Game Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300">2D and 3D game development for various platforms.</p>
-                </div>
-            </div>
+<!-- Categories Section (Visually Enhanced) -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <span class="text-green-600 font-semibold">WHAT WE OFFER</span>
+            <h2 class="text-4xl font-bold text-gray-800 dark:text-white mt-3">Tech Services Categories</h2>
+            <div class="w-20 h-1 bg-green-600 mx-auto mt-4 rounded-full"></div>
         </div>
-    </section>
 
-    <!-- Featured Gigs Section -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center dark:text-gray-100">Featured Tech Services</h2>
-            <div id="gig-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Gig Cards will be injected here by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center dark:text-gray-100">What Our Clients Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-500 mr-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800 dark:text-gray-100">5.0</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Web Development -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-green-600 group-hover:h-full group-hover:bg-green-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-green-700 group-hover:text-green-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16L2 12l4-4" />
+                        </svg>
                     </div>
-                    <p class="text-gray-600 mb-6 dark:text-gray-300">"The developer I hired through GigHub delivered an exceptional mobile app that exceeded our expectations. The communication was excellent throughout the project."</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">Michael Johnson</h4>
-                            <p class="text-gray-500 text-sm dark:text-gray-400">CTO, TechStart Inc.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-500 mr-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800 dark:text-gray-100">4.9</span>
-                    </div>
-                    <p class="text-gray-600 mb-6 dark:text-gray-300">"Our AI project was complex, but the data scientist we found on GigHub had the perfect expertise. They delivered ahead of schedule with outstanding results."</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">Sarah Williams</h4>
-                            <p class="text-gray-500 text-sm dark:text-gray-400">Product Manager, InnovateAI</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-500 mr-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="font-bold text-gray-800 dark:text-gray-100">5.0</span>
-                    </div>
-                    <p class="text-gray-600 mb-6 dark:text-gray-300">"The cybersecurity expert we hired identified vulnerabilities in our system we didn't even know existed. Their report was thorough and their fixes were effective."</p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">David Chen</h4>
-                            <p class="text-gray-500 text-sm dark:text-gray-400">Security Director, SafeNet Systems</p>
-                        </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Web Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Custom websites, web applications, and e-commerce solutions built with modern technologies.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 rounded-full group-hover:bg-white group-hover:text-green-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <!-- Mobile App Development -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-600 group-hover:h-full group-hover:bg-blue-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-700 group-hover:text-blue-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Mobile App Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        iOS and Android apps built with native or cross-platform technologies for optimal performance.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 rounded-full group-hover:bg-white group-hover:text-blue-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cybersecurity -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-rose-600 group-hover:h-full group-hover:bg-rose-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-rose-700 group-hover:text-rose-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002 12c0 2.757 1.125 5.228 2.938 7.073L12 22l7.062-2.927A12.001 12.001 0 0022 12c0-2.757-1.125-5.228-2.938-7.073z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Cybersecurity</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Comprehensive security solutions to protect your digital assets and infrastructure.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-200 rounded-full group-hover:bg-white group-hover:text-rose-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI & Machine Learning -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-purple-600 group-hover:h-full group-hover:bg-purple-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-purple-700 group-hover:text-purple-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 10v4M19 10v4M2 12h2m16 0h2M7 12h10" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">AI & Machine Learning</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Artificial Intelligence and Machine Learning solutions to transform your business processes.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-200 rounded-full group-hover:bg-white group-hover:text-purple-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Development -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-indigo-600 group-hover:h-full group-hover:bg-indigo-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-indigo-700 group-hover:text-indigo-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L12 19.25M12 19.25L14.25 17M12 19.25V4.75M19.25 12L17 9.75M17 9.75L19.25 7.5M17 9.75H4.75" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Software Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Custom software solutions tailored to your business needs, from desktop to enterprise applications.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full group-hover:bg-white group-hover:text-indigo-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WordPress/Shopify/Wix -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-amber-600 group-hover:h-full group-hover:bg-amber-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-amber-700 group-hover:text-amber-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253M12 6.253c1.168.776 2.754 1.253 4.5 1.253s3.332-.477 4.5-1.253M12 6.253v13m-4.5 0H7.5m3-13h.01M12 12.753v-6.5" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">WordPress/Shopify/Wix</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Professional websites built with popular CMS platforms, optimized for performance and SEO.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 rounded-full group-hover:bg-white group-hover:text-amber-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bug Fixing / Debugging -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-red-600 group-hover:h-full group-hover:bg-red-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-red-700 group-hover:text-red-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Bug Fixing / Debugging</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Expert debugging services to identify and fix issues in your existing applications.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-200 rounded-full group-hover:bg-white group-hover:text-red-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Science & Analytics -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-orange-600 group-hover:h-full group-hover:bg-orange-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-orange-700 group-hover:text-orange-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M18 10H6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Data Science & Analytics</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Data analysis, visualization, and predictive modeling to uncover valuable business insights.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-200 rounded-full group-hover:bg-white group-hover:text-orange-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Development (HIDDEN INITIALLY) -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-pink-600 group-hover:h-full group-hover:bg-pink-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-pink-700 group-hover:text-pink-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 2m0 0l-2-2m2 2V3m2 7h.01M12 12h.01M12 21a9 9 0 110-18 9 9 0 010 18z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Game Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Engaging 2D/3D game development for mobile, desktop, and web platforms.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-pink-100 dark:bg-pink-900/40 text-pink-800 dark:text-pink-200 rounded-full group-hover:bg-white group-hover:text-pink-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps / Cloud Services (HIDDEN INITIALLY) -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-sky-600 group-hover:h-full group-hover:bg-sky-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-sky-100 dark:bg-sky-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-sky-700 group-hover:text-sky-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 005-5V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">DevOps / Cloud Services</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        CI/CD pipelines, cloud infrastructure, and automation for scalable deployments.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-sky-100 dark:bg-sky-900/40 text-sky-800 dark:text-sky-200 rounded-full group-hover:bg-white group-hover:text-sky-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Design (HIDDEN INITIALLY) -->
+            <div class="group relative bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 overflow-hidden hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-teal-600 group-hover:h-full group-hover:bg-teal-700 transition-all duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-white transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-teal-700 group-hover:text-teal-600 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 .552.448 1 1 1h14c.552 0 1-.448 1-1V7M4 7h16M4 7l-2 2v6l2 2h16l2-2v-6l-2-2M12 16v-4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-white transition-colors duration-300">Database Design</h3>
+                    <p class="text-gray-600 dark:text-gray-300 group-hover:text-white/80 transition-colors duration-300">
+                        Efficient database architecture, optimization, and management solutions.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/40 text-teal-800 dark:text-teal-200 rounded-full group-hover:bg-white group-hover:text-teal-700 transition-colors duration-300">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- See More Button -->
+        <div class="text-center mt-12">
+            <button id="seeMoreBtn" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                See More Categories
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('seeMoreBtn').addEventListener('click', function() {
+        const categoriesGrid = document.querySelector('.grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4.gap-8');
+        const allCategoryCards = categoriesGrid.querySelectorAll('.group.relative');
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+
+        // Assuming the first 8 cards are initially visible, and the next 3 are hidden
+        const startIndexForHidden = 8; 
+        let isCurrentlyShowingMore = false; // Flag to track if we are currently showing all categories
+
+        // Check if the first hidden card is visible to determine current state
+        if (allCategoryCards[startIndexForHidden] && !allCategoryCards[startIndexForHidden].classList.contains('hidden')) {
+            isCurrentlyShowingMore = true;
+        }
+
+        if (isCurrentlyShowingMore) {
+            // If currently showing all, hide the ones from startIndexForHidden onwards
+            for (let i = startIndexForHidden; i < allCategoryCards.length; i++) {
+                allCategoryCards[i].classList.add('hidden');
+            }
+            seeMoreBtn.textContent = 'See More Categories';
+        } else {
+            // If currently hiding some, show the ones from startIndexForHidden onwards
+            for (let i = startIndexForHidden; i < allCategoryCards.length; i++) {
+                allCategoryCards[i].classList.remove('hidden');
+            }
+            seeMoreBtn.textContent = 'See Less';
+        }
+    });
+</script>
+
+
+<!-- Featured Gigs Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <span class="text-green-600 font-semibold">POPULAR SERVICES</span>
+            <h2 class="text-4xl font-bold text-gray-800 dark:text-white mt-3">Featured Tech Services</h2>
+            <div class="w-20 h-1 bg-green-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Web Development Gig -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Web Development" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Popular
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-green-600 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded">
+                            Web Development
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.9</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(120)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-green-600 transition-colors">
+                        Responsive Website Development
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Custom websites built with React, Vue, or Angular for optimal performance.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$500</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile App Gig -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Mobile App" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded">
+                            Mobile App
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.8</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(95)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
+                        Cross-Platform Mobile App
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Build once, run anywhere with Flutter or React Native for iOS and Android.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$1500</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Solution Gig -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://cdn.mos.cms.futurecdn.net/cuJ2nHdA2cLngX4bhsHsye.jpg" 
+                         alt="AI Solution" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Trending
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-purple-600 bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded">
+                            AI Solution
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">5.0</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(75)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-purple-600 transition-colors">
+                        Custom AI Solution
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Machine Learning models tailored to your specific business requirements.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$2000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Audit Gig -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Security Audit" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-red-600 bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded">
+                            Security
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.9</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(60)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-red-600 transition-colors">
+                        Security Audit
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Comprehensive assessment of your web/mobile applications and infrastructure.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$800</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Hidden Additional Services -->
+        <div id="hiddenServices" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+
+           <!-- Game Development -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="Game Development" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-pink-600 bg-pink-100 dark:bg-pink-900/30 px-2 py-1 rounded">
+                            Game Dev
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.7</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(85)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-pink-600 transition-colors">
+                        Game Development
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Engaging 2D/3D game development for mobile, desktop, and web platforms.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$2500</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps Services -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                         alt="DevOps" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Popular
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded">
+                            DevOps
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.8</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(78)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
+                        DevOps Solutions
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">CI/CD pipelines, cloud infrastructure, and automation for scalable deployments.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$1800</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Analytics -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://www.ecollege.ie/sites/default/files/styles/header_image_645x450_/public/2024-03/Digital_Data-Analytics_0.jpg.webp?itok=4sX24dEQ" 
+                         alt="Data Analytics" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded">
+                            Data Science
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.9</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(92)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-orange-600 transition-colors">
+                        Data Analytics
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Data analysis, visualization, and predictive modeling for business insights.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$1200</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain Development -->
+            <div class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFFUKEHHevIXajNkOIkBGJr6mF4rJSfuufWphF4SAPz6AFZ5Jo0F9pqVuoRdUKoB_4X9s&usqp=CAU" 
+                         alt="Blockchain" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                    <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Trending
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-purple-600 bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded">
+                            Blockchain
+                        </span>
+                        <div class="flex items-center text-yellow-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="text-sm font-medium ml-1">4.8</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-xs ml-1">(65)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-purple-600 transition-colors">
+                        Blockchain Development
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Smart contracts, DApps, and blockchain solutions for your business.</p>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">Starting at</span>
+                        <span class="text-lg font-bold text-green-600">$3000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <button id="browseAllBtn" class="px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-colors duration-300 font-medium shadow-lg hover:shadow-xl">
+                Browse All Services
+            </button>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('browseAllBtn').addEventListener('click', function() {
+        const hiddenServices = document.getElementById('hiddenServices');
+        const browseBtn = document.getElementById('browseAllBtn');
+        
+        if (hiddenServices.classList.contains('hidden')) {
+            hiddenServices.classList.remove('hidden');
+            browseBtn.textContent = 'Show Less';
+        } else {
+            hiddenServices.classList.add('hidden');
+            browseBtn.textContent = 'Browse All Services';
+        }
+    });
+</script>
+</section>
+
+       
+
+
+        </div>
+    </div>
+</section>    
     <!-- CTA Section -->
     <section class="py-16 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
         <div class="container mx-auto px-4 text-center">
