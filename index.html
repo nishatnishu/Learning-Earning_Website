@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Cave</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script src="theme-toggle.js" defer></script>
+   <link rel="stylesheet" href="fiverr-clone-styles.css">
+    <style>
+        header {
+            padding-top: 0.5rem; 
+            padding-bottom: 0.5rem; 
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+   <!-- Header -->
+<header class="bg-white shadow-sm py-3 px-6 md:px-12 fixed top-0 left-0 right-0 z-50 dark:bg-gray-800 dark:shadow-lg">
+    <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="text-3xl font-bold text-green-600">GigHub</a>
+
+        <!-- Navigation Links (Hidden on small screens, shown on medium and up) -->
+        <ul class="hidden md:flex space-x-8 text-lg font-medium">
+            <li><a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300 dark:text-blue-400 dark:hover:text-blue-300">Explore</a></li>
+            <li><a href="#" class="text-purple-600 hover:text-purple-800 transition duration-300 dark:text-purple-400 dark:hover:text-purple-300">Become a Seller</a></li>
+            <li><a href="#" class="text-red-600 hover:text-red-800 transition duration-300 dark:text-red-400 dark:hover:text-red-300">Business</a></li>
+        </ul>
+
+        <!-- In your header section - Replace just the theme toggle part -->
+<div class="flex items-center space-x-4">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300">
+        <!-- Light Icon (sun) -->
+        <svg id="theme-toggle-light-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325 5.325l-.707.707M6.343 6.343l-.707-.707m12.728 0l-.707-.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        </svg>
+        <!-- Dark Icon (moon) -->
+        <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+    </button>
+    
+    <!-- Keep your existing Sign In and Join buttons -->
+    <button class="text-gray-700 hover:text-green-600 font-medium transition duration-300 dark:text-gray-200 dark:hover:text-green-400">Sign In</button>
+    <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300 shadow-md">Join</button>
+</div>
+    </nav>
+</header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="relative text-white py-24 md:py-32 flex items-center justify-center min-h-screen-1/2 mt-16 overflow-hidden">
+        <video autoplay loop muted playsinline class="video-background">
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container mx-auto text-center px-4 hero-content">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                Find the perfect tech services for your business
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90">
+                Work with talented developers and tech experts from around the world.
+            </p>
+            <div class="max-w-xl mx-auto flex rounded-full bg-white shadow-lg overflow-hidden dark:bg-gray-700">
+                <input type="text" placeholder="Try 'web development' or 'mobile app'"
+                       class="flex-grow p-4 text-gray-800 text-lg focus:outline-none rounded-l-full pl-6 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-300">
+                <button class="bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg font-semibold rounded-r-full transition duration-300">
+                    Search
+                </button>
+            </div>
+            <!-- Popular Suggestions -->
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <span class="bg-white bg-opacity-20 text-white text-sm px-4 py-2 rounded-full border border-white hover:bg-opacity-30 transition duration-300 cursor-pointer dark:bg-gray-600 dark:bg-opacity-50 dark:border-gray-500 dark:hover:bg-opacity-70">Web Development</span>
+                <span class="bg-white bg-opacity-20 text-white text-sm px-4 py-2 rounded-full border border-white hover:bg-opacity-30 transition duration-300 cursor-pointer dark:bg-gray-600 dark:bg-opacity-50 dark:border-gray-500 dark:hover:bg-opacity-70">Mobile App Development</span>
+                <span class="bg-white bg-opacity-20 text-white text-sm px-4 py-2 rounded-full border border-white hover:bg-opacity-30 transition duration-300 cursor-pointer dark:bg-gray-600 dark:bg-opacity-50 dark:border-gray-500 dark:hover:bg-opacity-70">AI & Machine Learning</span>
+                <span class="bg-white bg-opacity-20 text-white text-sm px-4 py-2 rounded-full border border-white hover:bg-opacity-30 transition duration-300 cursor-pointer dark:bg-gray-600 dark:bg-opacity-50 dark:border-gray-500 dark:hover:bg-opacity-70">Data Science</span>
+                <span class="bg-white bg-opacity-20 text-white text-sm px-4 py-2 rounded-full border border-white hover:bg-opacity-30 transition duration-300 cursor-pointer dark:bg-gray-600 dark:bg-opacity-50 dark:border-gray-500 dark:hover:bg-opacity-70">Cybersecurity</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center dark:text-gray-100">Tech Services Categories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Web Development -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Web Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Custom websites, web applications, and e-commerce solutions.</p>
+                </div>
+                
+                <!-- Mobile App Development -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Mobile App Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">iOS and Android apps built with native or cross-platform technologies.</p>
+                </div>
+                
+                <!-- Software Development -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572-1.065c-.426-1.756-2.924-1.756-3.35 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Software Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Custom software solutions tailored to your business needs.</p>
+                </div>
+                
+                <!-- WordPress/Shopify/Wix -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">CMS Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">WordPress, Shopify, Wix and other CMS solutions.</p>
+                </div>
+                
+                <!-- Bug Fixing / Debugging -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Bug Fixing</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Debugging and fixing issues in your existing applications.</p>
+                </div>
+                
+                <!-- AI & Machine Learning -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">AI & ML</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Artificial Intelligence and Machine Learning solutions.</p>
+                </div>
+                
+                <!-- Data Science & Analytics -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Data Science</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Data analysis, visualization, and predictive modeling.</p>
+                </div>
+                
+                <!-- Game Development -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                    <div class="text-green-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-100">Game Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">2D and 3D game development for various platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Gigs Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center dark:text-gray-100">Featured Tech Services</h2>
+            <div id="gig-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Gig Cards will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center dark:text-gray-100">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-800 dark:text-gray-100">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 dark:text-gray-300">"The developer I hired through GigHub delivered an exceptional mobile app that exceeded our expectations. The communication was excellent throughout the project."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">Michael Johnson</h4>
+                            <p class="text-gray-500 text-sm dark:text-gray-400">CTO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-800 dark:text-gray-100">4.9</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 dark:text-gray-300">"Our AI project was complex, but the data scientist we found on GigHub had the perfect expertise. They delivered ahead of schedule with outstanding results."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">Sarah Williams</h4>
+                            <p class="text-gray-500 text-sm dark:text-gray-400">Product Manager, InnovateAI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-500 mr-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-800 dark:text-gray-100">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 dark:text-gray-300">"The cybersecurity expert we hired identified vulnerabilities in our system we didn't even know existed. Their report was thorough and their fixes were effective."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 dark:text-gray-100">David Chen</h4>
+                            <p class="text-gray-500 text-sm dark:text-gray-400">Security Director, SafeNet Systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to find the perfect tech service?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Join thousands of businesses who found their ideal tech solutions on GigHub.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-green-700 px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 text-lg font-semibold shadow-lg">
+                    Get Started
+                </button>
+                <button class="bg-transparent border-2 border-white px-8 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300 text-lg font-semibold">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12 px-6 md:px-12 dark:bg-gray-950 dark:text-gray-400">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4 dark:text-gray-100">Tech Services</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Web Development</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Mobile App Development</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">AI & Machine Learning</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Data Science</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Cybersecurity</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">DevOps & Cloud</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4 dark:text-gray-100">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Careers</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Press & News</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Partnerships</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4 dark:text-gray-100">Support</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Trust & Safety</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Selling on GigHub</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Buying on GigHub</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Community Standards</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4 dark:text-gray-100">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-green-600 transition duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-green-600 transition duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-green-600 transition duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-green-600 transition duration-300">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
+                </div>
+                <h4 class="text-lg font-semibold text-white mb-2 dark:text-gray-100">Subscribe to Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="flex-grow p-3 rounded-l-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button class="bg-green-600 text-white px-4 rounded-r-lg hover:bg-green-700 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm dark:border-gray-700 dark:text-gray-500">
+            &copy; 2025 GigHub Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Gig Detail Modal -->
+    <div id="gig-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="modal-overlay absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-xl w-full mx-4 relative z-10 transform scale-95 opacity-0 transition-all duration-300 ease-out dark:bg-gray-800 dark:text-gray-100">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold dark:text-gray-400 dark:hover:text-gray-100">
+                &times;
+            </button>
+            <h3 id="modal-gig-title" class="text-3xl font-bold text-gray-800 mb-4 dark:text-gray-100"></h3>
+            <p id="modal-gig-description" class="text-gray-600 mb-6 dark:text-gray-300"></p>
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xl font-semibold text-green-600">Starting at <span id="modal-gig-price"></span></span>
+                <div class="flex items-center text-yellow-500">
+                    <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                    <span id="modal-gig-rating" class="font-bold"></span>
+                </div>
+            </div>
+            <button class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition duration-300 w-full text-lg font-medium">
+                Order Now
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement; // This refers to the <html> tag
+
+        // Check for saved theme preference on page load
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Sample Gig Data (in a real app, this would come from a backend API)
+        const gigs = [
+            {
+                id: 1,
+                title: "I will develop a responsive website for your business",
+                description: "I offer professional website development services using modern technologies like React, Vue, or Angular. From sleek landing pages to complex web applications, I ensure a responsive and high-performance solution tailored to your needs.",
+                price: "$500",
+                rating: "4.9 (120)",
+                image: "https://placehold.co/400x250/007BFF/FFFFFF?text=Web+Development"
+            },
+            {
+                id: 2,
+                title: "I will build a cross-platform mobile app for iOS and Android",
+                description: "Transform your idea into a functional mobile application using Flutter or React Native. I specialize in creating beautiful, performant apps that work seamlessly on both platforms with a single codebase.",
+                price: "$1500",
+                rating: "4.8 (95)",
+                image: "https://placehold.co/400x250/FF5722/FFFFFF?text=Mobile+App"
+            },
+            {
+                id: 3,
+                title: "I will create a custom AI solution for your business",
+                description: "Leverage the power of artificial intelligence with custom machine learning models. Whether you need predictive analytics, computer vision, or natural language processing, I can build a solution tailored to your requirements.",
+                price: "$2000",
+                rating: "5.0 (75)",
+                image: "https://placehold.co/400x250/9C27B0/FFFFFF?text=AI+Solution"
+            },
+            {
+                id: 4,
+                title: "I will perform a comprehensive security audit",
+                description: "Protect your digital assets with a thorough security assessment. I'll identify vulnerabilities in your web/mobile applications and infrastructure, then provide detailed recommendations to mitigate risks.",
+                price: "$800",
+                rating: "4.9 (60)",
+                image: "https://placehold.co/400x250/009688/FFFFFF?text=Security+Audit"
+            },
+            {
+                id: 5,
+                title: "I will develop a custom WordPress theme",
+                description: "Get a completely custom WordPress theme designed and developed specifically for your brand. No bloated themes with unnecessary features - just clean, optimized code tailored to your content strategy.",
+                price: "$600",
+                rating: "4.8 (85)",
+                image: "https://placehold.co/400x250/FFC107/333333?text=WordPress+Theme"
+            },
+            {
+                id: 6,
+                title: "I will implement DevOps solutions for your project",
+                description: "Streamline your development workflow with CI/CD pipelines, containerization (Docker), and cloud infrastructure (AWS/Azure/GCP). I'll help you automate deployments and improve your development process.",
+                price: "$900",
+                rating: "4.9 (50)",
+                image: "https://placehold.co/400x250/2196F3/FFFFFF?text=DevOps"
+            },
+            {
+                id: 7,
+                title: "I will analyze and visualize your data",
+                description: "Make data-driven decisions with comprehensive analysis and beautiful visualizations. I work with Python, R, Tableau, and Power BI to uncover insights and present them in an actionable way.",
+                price: "$700",
+                rating: "4.7 (65)",
+                image: "https://placehold.co/400x250/E91E63/FFFFFF?text=Data+Analysis"
+            },
+            {
+                id: 8,
+                title: "I will develop a 2D/3D game for you",
+                description: "From concept to completion, I can create engaging 2D or 3D games for mobile, desktop, or web. Experience with Unity, Unreal Engine, and custom game development frameworks.",
+                price: "$2500",
+                rating: "4.9 (40)",
+                image: "https://placehold.co/400x250/8BC34A/FFFFFF?text=Game+Development"
+            },
+        ];
+
+        const gigCardsContainer = document.getElementById('gig-cards-container');
+        const gigModal = document.getElementById('gig-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalGigTitle = document.getElementById('modal-gig-title');
+        const modalGigDescription = document.getElementById('modal-gig-description');
+        const modalGigPrice = document.getElementById('modal-gig-price');
+        const modalGigRating = document.getElementById('modal-gig-rating');
+
+        // Function to render gig cards
+        function renderGigCards() {
+            gigs.forEach(gig => {
+                const card = document.createElement('div');
+                card.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden', 'cursor-pointer', 'gig-card', 'dark:bg-gray-700', 'dark:shadow-xl');
+                card.setAttribute('data-gig-id', gig.id); // Store gig ID for modal
+
+                card.innerHTML = `
+                    <img src="${gig.image}" alt="${gig.title}" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2 dark:text-gray-100">${gig.title}</h4>
+                        <div class="flex items-center text-yellow-500 text-sm mb-3">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.927 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                            <span class="font-bold">${gig.rating.split(' ')[0]}</span>
+                            <span class="text-gray-500 ml-1 dark:text-gray-300">(${gig.rating.split(' ')[1]})</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Starting at</span>
+                            <span class="text-lg font-bold text-green-600">${gig.price}</span>
+                        </div>
+                    </div>
+                `;
+                gigCardsContainer.appendChild(card);
+
+                // Add click listener to each card to open modal
+                card.addEventListener('click', () => {
+                    const selectedGig = gigs.find(g => g.id == card.getAttribute('data-gig-id'));
+                    if (selectedGig) {
+                        modalGigTitle.textContent = selectedGig.title;
+                        modalGigDescription.textContent = selectedGig.description;
+                        modalGigPrice.textContent = selectedGig.price;
+                        modalGigRating.textContent = selectedGig.rating;
+                        gigModal.classList.remove('hidden');
+                        setTimeout(() => {
+                            gigModal.querySelector('.bg-white').classList.remove('scale-95', 'opacity-0');
+                            gigModal.querySelector('.bg-white').classList.add('scale-100', 'opacity-100');
+                        }, 10); // Small delay for transition
+                    }
+                });
+            });
+        }
+
+        // Close modal functionality
+        closeModalBtn.addEventListener('click', () => {
+            gigModal.querySelector('.bg-white').classList.remove('scale-100', 'opacity-100');
+            gigModal.querySelector('.bg-white').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                gigModal.classList.add('hidden');
+            }, 300); // Match transition duration
+        });
+
+        // Close modal if clicking outside the content
+        gigModal.addEventListener('click', (event) => {
+            if (event.target === gigModal.querySelector('.modal-overlay')) {
+                closeModalBtn.click();
+            }
+        });
+
+        // Initial render of gig cards when the page loads
+        document.addEventListener('DOMContentLoaded', renderGigCards);
+    </script>
+</body>
+</html>
