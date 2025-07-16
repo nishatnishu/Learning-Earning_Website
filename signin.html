@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In - GigHub</title>
+    <link rel="stylesheet" href="auth.css">
+    <script src="auth.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center h-screen">
+    <form class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md space-y-4">
+        <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white">Sign in to your account</h2>
+        <input type="email" placeholder="Email" class="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 dark:text-white">
+        <input type="password" placeholder="Password" class="w-full p-3 rounded bg-gray-100 dark:bg-gray-700 dark:text-white">
+        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition">Sign In</button>
+        <p class="text-sm text-center text-gray-600 dark:text-gray-400">New here? 
+            <a href="signup.html" class="text-green-600 hover:underline">Join now</a>
+        </p>
+    </form>
+    <div class="relative">
+  <input type="password" placeholder="Password" class="w-full p-3 pr-10 rounded bg-gray-100 dark:bg-gray-700 dark:text-white">
+  <span id="togglePassword" class="absolute right-3 top-3 cursor-pointer text-gray-500">👁️</span>
+</div>
+<script src="auth.js"></script>
+
+</body>
+</html>

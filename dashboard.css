@@ -1,0 +1,372 @@
+/* Category Section Container */
+.category-section {
+    position: relative;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dark .category-section {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+/* Category Grid Layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Category Card - Enhanced Elegance */
+.category-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 0;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background 0.3s ease;
+}
+
+.dark .category-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Category Icon/Image Area */
+.category-icon {
+    width: 100%;
+    height: 140px;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+       transition: all 0.4s ease, 
+                background-color 0.3s ease;
+}
+
+.category-icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+}
+
+.category-icon img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.category-icon i {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Content Area */
+.category-card > div:first-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.category-card .p-4 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.category-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.dark .category-card h3 {
+    color: #f8fafc;
+}
+
+.category-card p {
+    color: #64748b;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.dark .category-card p {
+    color: #cbd5e1;
+}
+
+.category-card a {
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    color: inherit;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.category-card a:hover {
+    transform: translateX(4px);
+    text-decoration: none;
+}
+
+/* Bottom Accent */
+.h-1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transition: all 0.4s ease;
+     transition: all 0.4s ease, 
+                background 0.3s ease;
+}
+
+/* Hover Effects */
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.category-card:hover .category-icon img {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Glow effect on hover */
+.category-card:hover .category-icon {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.dark .category-card:hover .category-icon {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Show/Hide Animation */
+.hidden-category {
+    display: none !important;
+    opacity: 0;
+}
+.random-color-1 {
+    --icon-bg: #f472b6; /* pink-400 */
+    --border-from: #f472b6;
+    --border-to: #db2777; /* pink-600 */
+    --text-color: #db2777;
+}
+
+.random-color-2 {
+    --icon-bg: #a78bfa; /* purple-400 */
+    --border-from: #a78bfa;
+    --border-to: #7c3aed; /* purple-600 */
+    --text-color: #7c3aed;
+}
+
+.random-color-3 {
+    --icon-bg: #60a5fa; /* blue-400 */
+    --border-from: #60a5fa;
+    --border-to: #2563eb; /* blue-600 */
+    --text-color: #2563eb;
+}
+
+.random-color-4 {
+    --icon-bg: #34d399; /* emerald-400 */
+    --border-from: #34d399;
+    --border-to: #059669; /* emerald-600 */
+    --text-color: #059669;
+}
+
+.random-color-5 {
+    --icon-bg: #fbbf24; /* amber-400 */
+    --border-from: #fbbf24;
+    --border-to: #d97706; /* amber-600 */
+    --text-color: #d97706;
+}
+
+/* Dark mode variants */
+.dark .random-color-1 {
+    --icon-bg: #831843; /* pink-900 */
+    --text-color: #f472b6; /* pink-400 */
+}
+.dark .random-color-2 {
+    --icon-bg: #4c1d95; /* purple-900 */
+    --text-color: #a78bfa; /* purple-400 */
+}
+.dark .random-color-3 {
+    --icon-bg: #1e40af; /* blue-900 */
+    --text-color: #60a5fa; /* blue-400 */
+}
+.dark .random-color-4 {
+    --icon-bg: #065f46; /* emerald-900 */
+    --text-color: #34d399; /* emerald-400 */
+}
+.dark .random-color-5 {
+    --icon-bg: #92400e; /* amber-900 */
+    --text-color: #fbbf24; /* amber-400 */
+}
+
+/* Apply the random colors on hover */
+.category-card:hover .category-icon {
+    background-color: var(--icon-bg) !important;
+}
+
+.category-card:hover .h-1 {
+    background: linear-gradient(90deg, var(--border-from), var(--border-to)) !important;
+}
+
+.category-card:hover a {
+    color: var(--text-color) !important;
+}
+
+/* Glow effect enhancement */
+.category-card:hover .category-icon {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    filter: brightness(1.1);
+}
+
+.dark .category-card:hover .category-icon {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+
+.visible-category {
+    display: block;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Browse More Button */
+.browse-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2.25rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 3rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.browse-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    background: linear-gradient(135deg, #7477ff 0%, #9d7af9 100%);
+}
+
+.browse-more-btn .browse-more-text {
+    transition: all 0.3s ease;
+}
+
+.browse-more-btn:hover .browse-more-text {
+    letter-spacing: 0.5px;
+}
+
+.browse-more-btn i {
+    transition: all 0.3s ease;
+    margin-left: 0.75rem;
+}
+
+.browse-more-btn:hover i {
+    transform: translateX(3px);
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-pulse {
+    animation: pulse 0.3s ease;
+}
+
+/* Dark mode adjustments */
+.dark .browse-more-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+
+.dark .browse-more-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    
+    .category-card {
+        height: 300px;
+    }
+    
+    .category-icon {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-section {
+        padding: 2rem 1.25rem;
+    }
+    
+    .category-card {
+        height: 280px;
+        border-radius: 0.75rem;
+    }
+    
+    .category-icon {
+        height: 100px;
+        border-radius: 0.75rem 0.75rem 0 0;
+    }
+    
+    .category-card .p-4 {
+        padding: 1.25rem;
+    }
+}
