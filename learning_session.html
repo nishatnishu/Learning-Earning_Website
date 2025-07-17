@@ -69,6 +69,15 @@
             opacity: 1;
             visibility: visible;
         }
+        #moreCoursesBtn {
+    background-size: 200% auto;
+    animation: gradientPulse 8s ease infinite;
+}
+@keyframes gradientPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
         
     </style>
 </head>
@@ -495,11 +504,12 @@
                 </div>
             </div>
 
-          <div class="text-center mt-8">
+    <div class="text-center mt-8">
     <button id="moreCoursesBtn" onclick="toggleMoreCourses()" 
-            class="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 font-medium flex items-center justify-center mx-auto group">
-        <span id="buttonText">More Courses</span>
-        <i id="buttonIcon" class="fas fa-chevron-down ml-2 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+            class="px-8 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:via-pink-600 hover:to-orange-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-500 font-medium tracking-wide group">
+        <span class="relative z-10">More Courses</span>
+        <i class="fas fa-chevron-down ml-2 relative z-10 transition-transform duration-300 group-hover:translate-y-1"></i>
+        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"></span>
     </button>
 </div>
         </div>
@@ -621,7 +631,7 @@
                 courseItems.forEach(item => {
                     item.classList.remove('hidden');
                 });
-                moreCoursesBtn.innerHTML = 'Fewer Courses <i class="fas fa-chevron-up ml-2"></i>';
+                moreCoursesBtn.innerHTML = 'See Less <i class="fas fa-chevron-up ml-2"></i>';
                 moreCoursesBtn.dataset.expanded = 'true';
             }
         }
