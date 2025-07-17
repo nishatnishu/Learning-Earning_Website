@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Dashboard | TakaLagbe🙂</title>
+    <title>Job Dashboard | SkillSync🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,7 +29,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-green-600 dark:text-green-500">TakaLagbe🙂</span>
+                    <span class="text-xl font-bold text-green-600 dark:text-green-500">SkillSync🎓</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -55,7 +55,7 @@
                 <p class="text-gray-600 dark:text-gray-300 mt-2">Find your next opportunity or continue learning</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="learning-session.html" class="flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300 shadow-lg font-medium">
+                <a href="learning_session.html" class="flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300 shadow-lg font-medium">
                     <i class="fas fa-graduation-cap mr-2"></i> Start a Learning Session
                 </a>
             </div>
@@ -75,334 +75,358 @@
 </div>
         </div>
 
-        <!-- Available Jobs Section -->
-        <div class="mb-12">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Available Jobs</h2>
-                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                    <div class="relative flex-grow">
-                        <select id="jobCategoryFilter" class="filter-dropdown">
-                            <option value="all">All Categories</option>
-                            <!-- Options will be loaded by JavaScript -->
-                        </select>
-                    </div>
-                    <div class="relative flex-grow">
-                        <select class="filter-dropdown">
-                            <option>Any Experience Level</option>
-                            <option>Entry Level</option>
-                            <option>Intermediate</option>
-                            <option>Expert</option>
-                        </select>
-                    </div>
+<!-- Update the Available Jobs section header (replace the existing one) -->
+<div class="mb-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+        <div class="relative group">
+            <h2 class="text-3xl font-bold text-gray-800 dark:text-white relative inline-block">
+                <span class="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600">
+                    Available Jobs
+                </span>
+                <span class="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-purple-400 to-blue-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-1">Browse our latest opportunities</p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            <div class="relative flex-grow min-w-[200px]">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                    <i class="fas fa-filter"></i>
                 </div>
+                <select id="jobCategoryFilter" class="w-full px-4 py-2.5 pl-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none">
+                    <option value="all">All Categories</option>
+                    <!-- Options will be loaded by JavaScript -->
+                </select>
             </div>
-
-            <!-- Job Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobsGrid">
-                <!-- Jobs will be loaded here by JavaScript -->
-            </div>
-            <div class="text-center mt-8">
-                <button class="browse-more-btn">
-                    <span>Load More Jobs</span>
-                    <i class="fas fa-plus ml-2"></i>
-                </button>
+            <div class="relative flex-grow min-w-[200px]">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <select class="w-full px-4 py-2.5 pl-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none">
+                    <option>Any Experience Level</option>
+                    <option>Entry Level</option>
+                    <option>Intermediate</option>
+                    <option>Expert</option>
+                </select>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Job Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobsGrid">
+        <!-- Jobs will be loaded here by JavaScript -->
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-10">
+        <button id="loadMoreJobs" class="px-8 py-3 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group">
+            <span class="relative z-10 flex items-center justify-center">
+                <span>Load More Jobs</span>
+                <i class="fas fa-arrow-down ml-3 transition-transform duration-300 group-hover:translate-y-1"></i>
+            </span>
+            <span class="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></span>
+            <span class="absolute inset-0 border-2 border-purple-400 rounded-lg"></span>
+        </button>
+    </div>
+</div>
 
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-gray-500 dark:text-gray-400 text-sm">
-                &copy; 2023 TakaLagbe🙂. All rights reserved.
+                &copy; 2023 SkillSync🎓. All rights reserved.
             </p>
         </div>
     </footer>
-
-    <script type="module" src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-
-            // Check for saved theme preference
-            if (localStorage.getItem('theme') === 'dark' ||
-                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            }
-       
-document.getElementById('sign-out-btn-dashboard').addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
-
-            // Categories data with more elegant icons and colors
-            const categories = [
-                { name: "Web Development", icon: "code", color: "green", iconClass: "text-green-600" },
-                { name: "Mobile App Development", icon: "mobile-screen-button", color: "blue", iconClass: "text-blue-600" },
-                { name: "Software Development", icon: "laptop-code", color: "indigo", iconClass: "text-indigo-600" },
-                { name: "Cybersecurity", icon: "shield-halved", color: "rose", iconClass: "text-rose-600" },
-                { name: "AI & Machine Learning", icon: "robot", color: "purple", iconClass: "text-purple-600" },
-                { name: "WordPress/Shopify/Wix", icon: "cart-shopping", color: "amber", iconClass: "text-amber-600" },
-                { name: "Bug Fixing / Debugging", icon: "bug", color: "red", iconClass: "text-red-600" },
-                { name: "Data Science & Analytics", icon: "chart-line", color: "orange", iconClass: "text-orange-600" },
-                { name: "Game Development", icon: "gamepad", color: "pink", iconClass: "text-pink-600" },
-                { name: "DevOps / Cloud Services", icon: "cloud", color: "sky", iconClass: "text-sky-600" },
-                { name: "Database Design", icon: "database", color: "teal", iconClass: "text-teal-600" },
-                { name: "AI Prompting", icon: "comments", color: "violet", iconClass: "text-violet-600" }
-            ];
-
-            // Jobs data (kept same as before)
-            const jobs = [
-                { title: "Frontend Developer", category: "Web Development", desc: "Build responsive web applications with React", rate: "$50-$80/hr" },
-                { title: "iOS Developer", category: "Mobile App Development", desc: "Develop iOS apps using Swift", rate: "$60-$90/hr" },
-                { title: "ML Engineer", category: "AI & Machine Learning", desc: "Develop and implement AI models", rate: "$70-$100/hr" },
-                { title: "Security Analyst", category: "Cybersecurity", desc: "Monitor and protect systems", rate: "$65-$95/hr" },
-                { title: "Full Stack Developer", category: "Software Development", desc: "Build end-to-end web solutions", rate: "$55-$85/hr" },
-                { title: "WordPress Developer", category: "WordPress/Shopify/Wix", desc: "Create custom WordPress themes", rate: "$40-$70/hr" },
-                { title: "Debugging Specialist", category: "Bug Fixing / Debugging", desc: "Identify and fix complex bugs", rate: "$45-$75/hr" },
-                { title: "Data Scientist", category: "Data Science & Analytics", desc: "Analyze and interpret complex data", rate: "$75-$110/hr" },
-                { title: "Game Designer", category: "Game Development", desc: "Design engaging game mechanics", rate: "$60-$90/hr" },
-                { title: "Cloud Architect", category: "DevOps / Cloud Services", desc: "Design cloud infrastructure", rate: "$80-$120/hr" },
-                { title: "Database Administrator", category: "Database Design", desc: "Optimize database performance", rate: "$65-$95/hr" },
-                { title: "AI Prompt Engineer", category: "AI Prompting", desc: "Create effective AI prompts", rate: "$55-$85/hr" }
-            ];
-
-            // Initialize UI
-            initCategories();
-            initJobs();
-            initCategoryFilter();
-
-            document.getElementById('showMoreCategories').addEventListener('click', function() {
-                const categoriesGrid = document.getElementById('categoriesGrid');
-                const allCategoryCards = categoriesGrid.querySelectorAll('.category-card');
-                const initialShowCount = 8; // Assuming you want to show 8 initially, then reveal more
-
-                let currentlyShowingAll = true;
-                // Check if any of the initially hidden cards are currently visible
-                for (let i = initialShowCount; i < allCategoryCards.length; i++) {
-                    if (!allCategoryCards[i].classList.contains('hidden-category')) {
-                        currentlyShowingAll = true;
-                        break;
-                    }
-                    currentlyShowingAll = false; // If we reach here, it means the hidden ones are actually hidden
-                }
-
-
-                const button = this;
-                const icon = this.querySelector('i');
-
-                // Toggle icon rotation
-                icon.classList.toggle('rotate-180');
-
-                if (!currentlyShowingAll) {
-                    // Show hidden categories
-                    for (let i = initialShowCount; i < allCategoryCards.length; i++) {
-                        allCategoryCards[i].classList.remove('hidden-category');
-                        allCategoryCards[i].classList.add('visible-category');
-                    }
-                    button.querySelector('span').textContent = 'Show Less';
-                } else {
-                    // Hide the extra categories
-                    for (let i = initialShowCount; i < allCategoryCards.length; i++) {
-                        allCategoryCards[i].classList.remove('visible-category');
-                        allCategoryCards[i].classList.add('hidden-category');
-                    }
-                    button.querySelector('span').textContent = 'Browse More Categories';
-                }
-            });
-
-function initCategories() {
-    const grid = document.getElementById('categoriesGrid');
-    const showMoreBtn = document.getElementById('showMoreCategories');
-    const initialShowCount = 8;
-    
-    // Clear the grid before populating
-    grid.innerHTML = '';
-    
-    const categoryImages = {
-        "Web Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGNlNXRmcnZpYmZvcWV2Y2poa2I4Nmsxa252ejB4bnRwMTg1bmRvdCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RbDKaczqWovIugyJmW/giphy.gif",
-        "Mobile App Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHM5ZGh6b3J3c3ppeTJhdnIwNm1raDhhZnBicGR4OXVxOXNldzFtaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0HlTWB8ubpuRDTgI/giphy.gif",
-        "Software Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWtiY3piNHhuOXpvd2hta21raHd5dGQxZTZqcWt5bTNmYXgyNmppZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jMdNwswz8OccRlcOR1/giphy.gif",
-        "Cybersecurity": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnpkNmY1bjFobzkwcXlsN3RvazIwbnpucjJtanoweDQwemUyNTZ2NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RDZo7znAdn2u7sAcWH/giphy.gif",
-        "AI & Machine Learning": "https://i.gifer.com/7XwS.gif",
-        "WordPress/Shopify/Wix": "https://i.gifer.com/7XwV.gif",
-        "Bug Fixing / Debugging": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDJ3bmwwMDYxOWk1dWN4MmliZWpxamRibXh5eHQ0bXJjMTYwa3JqMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1vlBgKjXEz1jTtsuiH/giphy.gif",
-        "Data Science & Analytics": "https://i.gifer.com/7XwU.gif",
-        "Game Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDJ3bmwwMDYxOWk1dWN4MmliZWpxamRibXh5eHQ0bXJjMTYwa3JqMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif",
-        "DevOps / Cloud Services": "https://i.gifer.com/7XwX.gif",
-        "Database Design": "https://i.gifer.com/7XwY.gif",
-        "AI Prompting": "https://i.gifer.com/7XwZ.gif"
-    };
-
-    const categoryDescriptions = {
-        "Web Development": "Custom websites, web applications, and e-commerce solutions built with modern technologies.",
-        "Mobile App Development": "iOS and Android apps built with native or cross-platform technologies for optimal performance.",
-        "Software Development": "Custom software solutions tailored to your business needs, from desktop to cloud.",
-        "Cybersecurity": "Comprehensive security solutions to protect your digital assets and infrastructure.",
-        "AI & Machine Learning": "Artificial Intelligence and Machine Learning solutions to transform your business processes.",
-        "WordPress/Shopify/Wix": "Professional websites built with popular CMS platforms, optimized for performance and SEO.",
-        "Bug Fixing / Debugging": "Expert debugging services to identify and fix issues in your applications.",
-        "Data Science & Analytics": "Data analysis, visualization, and predictive modeling to uncover valuable insights.",
-        "Game Development": "Engaging game development services for mobile, console, and PC platforms.",
-        "DevOps / Cloud Services": "Cloud infrastructure and DevOps solutions for scalable applications.",
-        "Database Design": "Custom database solutions optimized for performance and reliability.",
-        "AI Prompting": "Specialized AI prompt engineering for optimal model performance."
-    };
-
-   categories.forEach((cat, index) => {
-    const card = document.createElement('div');
-    const isHidden = index >= initialShowCount;
-
-    card.className = `category-card ${isHidden ? 'hidden-category' : ''}`;
-    if (isHidden) {
-        card.style.display = 'none';
-    }
-
-    card.innerHTML = `
-        <div class="relative z-10 h-full flex flex-col">
-            <div class="category-icon bg-${cat.color}-100 dark:bg-${cat.color}-900/20 rounded-lg flex-grow relative overflow-hidden">
-                <img src="${categoryImages[cat.name] || 'default-image.jpg'}" 
-                     alt="${cat.name}" 
-                     class="absolute inset-0 w-full h-full object-cover opacity-70">
-                <i class="fas fa-${cat.icon} ${cat.iconClass} text-4xl relative z-10"></i>
-            </div>
-            <div class="p-4 flex-grow flex flex-col">
-                <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">${cat.name}</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">${categoryDescriptions[cat.name] || 'Professional services in this category'}</p>
-                <a href="#" class="text-${cat.color}-600 dark:text-${cat.color}-400 font-medium hover:underline inline-flex items-center">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                </a>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-${cat.color}-400 to-${cat.color}-600"></div>
-        </div>
-    `;
-
-    const icon = card.querySelector('.category-icon');
-    const border = card.querySelector('.h-1');
-    const link = card.querySelector('a');
-
-    const originalIconClasses = [`bg-${cat.color}-100`, `dark:bg-${cat.color}-900/20`];
-    const originalBorderClasses = [`from-${cat.color}-400`, `to-${cat.color}-600`];
-    const originalLinkClasses = [`text-${cat.color}-600`, `dark:text-${cat.color}-400`];
-
-    const colors = ['red', 'blue', 'green', 'purple', 'pink', 'indigo', 'yellow'];
-
-    function removeClassesStartingWith(element, prefixes) {
-        prefixes.forEach(prefix => {
-            Array.from(element.classList).forEach(cls => {
-                if (cls.startsWith(prefix)) {
-                    element.classList.remove(cls);
-                }
-            });
+<script type="module" src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         });
-    }
 
-    card.addEventListener('mouseenter', () => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    
+        document.getElementById('sign-out-btn-dashboard').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
 
-        removeClassesStartingWith(icon, ['bg-', 'dark:bg-']);
-        removeClassesStartingWith(border, ['from-', 'to-']);
-        removeClassesStartingWith(link, ['text-', 'dark:text-']);
+        // Categories data with more elegant icons and colors
+        const categories = [
+            { name: "Web Development", icon: "code", color: "green", iconClass: "text-green-600" },
+            { name: "Mobile App Development", icon: "mobile-screen-button", color: "blue", iconClass: "text-blue-600" },
+            { name: "Software Development", icon: "laptop-code", color: "indigo", iconClass: "text-indigo-600" },
+            { name: "Cybersecurity", icon: "shield-halved", color: "rose", iconClass: "text-rose-600" },
+            { name: "AI & Machine Learning", icon: "robot", color: "purple", iconClass: "text-purple-600" },
+            { name: "WordPress/Shopify/Wix", icon: "cart-shopping", color: "amber", iconClass: "text-amber-600" },
+            { name: "Bug Fixing / Debugging", icon: "bug", color: "red", iconClass: "text-red-600" },
+            { name: "Data Science & Analytics", icon: "chart-line", color: "orange", iconClass: "text-orange-600" },
+            { name: "Game Development", icon: "gamepad", color: "pink", iconClass: "text-pink-600" },
+            { name: "DevOps / Cloud Services", icon: "cloud", color: "sky", iconClass: "text-sky-600" },
+            { name: "Database Design", icon: "database", color: "teal", iconClass: "text-teal-600" },
+            { name: "AI Prompting", icon: "comments", color: "violet", iconClass: "text-violet-600" }
+        ];
 
-        icon.classList.add(`bg-${randomColor}-100`, `dark:bg-${randomColor}-900/20`);
-        border.classList.add(`from-${randomColor}-400`, `to-${randomColor}-600`);
-        link.classList.add(`text-${randomColor}-600`, `dark:text-${randomColor}-400`);
-    });
+        // Jobs data (kept same as before)
+        const jobs = [
+            { title: "Frontend Developer", category: "Web Development", desc: "Build responsive web applications with React", rate: "$50-$80/hr" },
+            { title: "iOS Developer", category: "Mobile App Development", desc: "Develop iOS apps using Swift", rate: "$60-$90/hr" },
+            { title: "ML Engineer", category: "AI & Machine Learning", desc: "Develop and implement AI models", rate: "$70-$100/hr" },
+            { title: "Security Analyst", category: "Cybersecurity", desc: "Monitor and protect systems", rate: "$65-$95/hr" },
+            { title: "Full Stack Developer", category: "Software Development", desc: "Build end-to-end web solutions", rate: "$55-$85/hr" },
+            { title: "WordPress Developer", category: "WordPress/Shopify/Wix", desc: "Create custom WordPress themes", rate: "$40-$70/hr" },
+            { title: "Debugging Specialist", category: "Bug Fixing / Debugging", desc: "Identify and fix complex bugs", rate: "$45-$75/hr" },
+            { title: "Data Scientist", category: "Data Science & Analytics", desc: "Analyze and interpret complex data", rate: "$75-$110/hr" },
+            { title: "Game Designer", category: "Game Development", desc: "Design engaging game mechanics", rate: "$60-$90/hr" },
+            { title: "Cloud Architect", category: "DevOps / Cloud Services", desc: "Design cloud infrastructure", rate: "$80-$120/hr" },
+            { title: "Database Administrator", category: "Database Design", desc: "Optimize database performance", rate: "$65-$95/hr" },
+            { title: "AI Prompt Engineer", category: "AI Prompting", desc: "Create effective AI prompts", rate: "$55-$85/hr" }
+        ];
 
-    card.addEventListener('mouseleave', () => {
-        removeClassesStartingWith(icon, ['bg-', 'dark:bg-']);
-        removeClassesStartingWith(border, ['from-', 'to-']);
-        removeClassesStartingWith(link, ['text-', 'dark:text-']);
+        // Variable to keep track of currently displayed jobs
+        let jobsToShow = 6;
+        const loadMoreBtn = document.getElementById('loadMoreJobs');
 
-        icon.classList.add(...originalIconClasses);
-        border.classList.add(...originalBorderClasses);
-        link.classList.add(...originalLinkClasses);
-    });
 
-    grid.appendChild(card);
-});
+        // Initialize UI
+        initCategories();
+        initJobs(); // Call initJobs to display the initial set of jobs
+        initCategoryFilter();
 
-    // Only show button if there are hidden categories
-    if (categories.length > initialShowCount) {
-        showMoreBtn.style.display = 'inline-flex';
-        
-        showMoreBtn.addEventListener('click', function() {
-            const hiddenCards = document.querySelectorAll('.hidden-category');
+        document.getElementById('showMoreCategories').addEventListener('click', function() {
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            const allCategoryCards = categoriesGrid.querySelectorAll('.category-card');
+            const initialCategoryShowCount = 8;
+
+            const button = this;
             const icon = this.querySelector('i');
             const textSpan = this.querySelector('.browse-more-text');
-            
-            if (textSpan.textContent === 'Show Less') {
-                // Hide extra categories
-                hiddenCards.forEach(card => {
-                    card.style.display = 'none';
-                    card.classList.remove('visible-category');
-                });
+
+            // Determine if all categories are currently visible based on button text
+            const currentlyShowingAllCategories = (textSpan.textContent === 'Show Less Categories');
+
+            if (!currentlyShowingAllCategories) {
+                // Show hidden categories
+                for (let i = initialCategoryShowCount; i < allCategoryCards.length; i++) {
+                    allCategoryCards[i].style.display = 'block'; // Ensure it's block
+                    allCategoryCards[i].classList.remove('hidden-category');
+                    allCategoryCards[i].classList.add('visible-category'); // Add fade-in animation
+                }
+                textSpan.textContent = 'Show Less Categories';
+                icon.classList.add('rotate-180');
+            } else {
+                // Hide the extra categories
+                for (let i = initialCategoryShowCount; i < allCategoryCards.length; i++) {
+                    allCategoryCards[i].classList.remove('visible-category'); // Remove fade-in animation class
+                    allCategoryCards[i].classList.add('hidden-category');
+                    allCategoryCards[i].style.display = 'none'; // Explicitly hide
+                }
                 textSpan.textContent = 'Browse More Categories';
                 icon.classList.remove('rotate-180');
-            } else {
-                // Show extra categories
-                hiddenCards.forEach(card => {
-                    card.style.display = 'block';
-                    card.classList.add('visible-category');
-                });
-                textSpan.textContent = 'Show Less';
-                icon.classList.add('rotate-180');
             }
+             // Add pulse animation on click
+            button.classList.add('animate-pulse');
+            setTimeout(() => {
+                button.classList.remove('animate-pulse');
+            }, 300);
+        });
+
+        function initCategories() {
+            const grid = document.getElementById('categoriesGrid');
+            const showMoreBtn = document.getElementById('showMoreCategories');
+            const initialCategoryShowCount = 8;
             
-            // Add pulse animation on click
+            // Clear the grid before populating to prevent duplicates if called multiple times
+            grid.innerHTML = '';
+            
+            const categoryImages = {
+                "Web Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGNlNXRmcnZpYmZvcWV2Y2poa2I4Nmsxa252ejB4bnRwMTg1bmRvdCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RbDKaczqWovIugyJmW/giphy.gif",
+                "Mobile App Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHM5ZGh6b3J3c3ppeTJhdnIwNm1raDhhZnBicGR4OXVxOXNldzFtaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0HlTWB8ubpuRDTgI/giphy.gif",
+                "Software Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWtiY3piNHhuOXpvd2hta21raHd5dGQxZTZqcWt5bTNmYXgyNmppZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jMdNwswz8OccRlcOR1/giphy.gif",
+                "Cybersecurity": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnpkNmY1bjFobzkwcXlsN3RvazIwbnpucjJtanoweDQwemUyNTZ2NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RDZo7znAdn2u7sAcWH/giphy.gif",
+                "AI & Machine Learning": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5jMnlkd2FnMmNienh4dXV2d2o1ZGplazBqdXJ3cjFmbHV3Y2M4aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITRemFlr5tS39AzQUL/giphy.gif",
+                "WordPress/Shopify/Wix": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdodzVlY284YWNnamM1c2t1YWc1bGZhZzB2OTJ3ajhyZW9tMDd5aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZgTR3UQ9XAWDvqy9jv/giphy.gif",
+                "Bug Fixing / Debugging": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDJ3bmwwMDYxOWk1dWN4MmliZWpxamRibXh5eHQ0bXJjMTYwa3JqMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1vlBgKjXEz1jTtsuiH/giphy.gif",
+                "Data Science & Analytics": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW15eG8zeWxuaWx3eXE4eHNpcTBnczBjMWlicXlycTh0eGxnMmM1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6fZ9WNtjNd3Ta2qUVe/giphy.gif",
+                "Game Development": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDJ3bmwwMDYxOWk1dWN4MmliZWpxamRibXh5eHQ0bXJjMTYwa3JqMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif",
+                "DevOps / Cloud Services": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDN0dHhoN2QweWZ0YnB3ZTB5cnFhNXhtYTltbGpqbmg3MnVuYXhwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/i9bTrs5ChdMKZk1Z1K/giphy.gif",
+                "Database Design": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGFicno4ZG85dHc5OHFseHRleW8yYWFxNWdyM3N0bW8yeTh3NmI3eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/i4jKn7itdV2Tvjzj6Y/giphy.gif",
+                "AI Prompting": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGdpdnlnY2J2YTR4eHhnMjZkOGxuaDFoNmc3cmxkY21iM2FyZmtsbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5k5vZwRFZR5aZeniqb/giphy.gif"
+            };
+
+            const categoryDescriptions = {
+                "Web Development": "Custom websites, web applications, and e-commerce solutions built with modern technologies.",
+                "Mobile App Development": "iOS and Android apps built with native or cross-platform technologies for optimal performance.",
+                "Software Development": "Custom software solutions tailored to your business needs, from desktop to cloud.",
+                "Cybersecurity": "Comprehensive security solutions to protect your digital assets and infrastructure.",
+                "AI & Machine Learning": "Artificial Intelligence and Machine Learning solutions to transform your business processes.",
+                "WordPress/Shopify/Wix": "Professional websites built with popular CMS platforms, optimized for performance and SEO.",
+                "Bug Fixing / Debugging": "Expert debugging services to identify and fix issues in your applications.",
+                "Data Science & Analytics": "Data analysis, visualization, and predictive modeling to uncover valuable insights.",
+                "Game Development": "Engaging game development services for mobile, console, and PC platforms.",
+                "DevOps / Cloud Services": "Cloud infrastructure and DevOps solutions for scalable applications.",
+                "Database Design": "Custom database solutions optimized for performance and reliability.",
+                "AI Prompting": "Specialized AI prompt engineering for optimal model performance."
+            };
+
+            categories.forEach((cat, index) => {
+                const card = document.createElement('div');
+                const isHidden = index >= initialCategoryShowCount;
+
+                card.className = `category-card ${isHidden ? 'hidden-category' : ''}`;
+                if (isHidden) {
+                    card.style.display = 'none'; // Initially hide beyond the count
+                }
+
+                card.innerHTML = `
+                    <div class="relative z-10 h-full flex flex-col">
+                        <div class="category-icon bg-${cat.color}-100 dark:bg-${cat.color}-900/20 rounded-lg flex-grow relative overflow-hidden">
+                            <img src="${categoryImages[cat.name] || 'default-image.jpg'}"
+                                alt="${cat.name}"
+                                class="absolute inset-0 w-full h-full object-cover opacity-70">
+                            <i class="fas fa-${cat.icon} ${cat.iconClass} text-4xl relative z-10"></i>
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col">
+                            <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">${cat.name}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">${categoryDescriptions[cat.name] || 'Professional services in this category'}</p>
+                            <a href="#" class="text-${cat.color}-600 dark:text-${cat.color}-400 font-medium hover:underline inline-flex items-center">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-${cat.color}-400 to-${cat.color}-600"></div>
+                    </div>
+                `;
+
+                const iconElement = card.querySelector('.category-icon');
+                const borderElement = card.querySelector('.h-1');
+                const linkElement = card.querySelector('a');
+
+                // Define all possible color prefixes to remove
+                const colorPrefixes = ['bg-', 'dark:bg-', 'from-', 'to-', 'text-'];
+                const allColors = ['red', 'blue', 'green', 'purple', 'pink', 'indigo', 'yellow', 'amber', 'rose', 'sky', 'teal', 'violet', 'orange']; // Include all colors used
+
+                // Helper function to remove classes starting with specific prefixes and including any defined color
+                function removeDynamicColorClasses(element) {
+                    Array.from(element.classList).forEach(cls => {
+                        if (colorPrefixes.some(prefix => cls.startsWith(prefix)) && allColors.some(color => cls.includes(color))) {
+                            element.classList.remove(cls);
+                        }
+                    });
+                }
+                
+                // Store initial classes for proper revert on mouseleave
+                // Capture classes excluding dynamic color ones that will be re-added
+                const initialIconClasses = Array.from(iconElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
+                const initialBorderClasses = Array.from(borderElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
+                const initialLinkClasses = Array.from(linkElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
+
+                card.addEventListener('mouseenter', () => {
+                    const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+
+                    removeDynamicColorClasses(iconElement);
+                    removeDynamicColorClasses(borderElement);
+                    removeDynamicColorClasses(linkElement);
+
+                    iconElement.classList.add(`bg-${randomColor}-100`, `dark:bg-${randomColor}-900/20`);
+                    borderElement.classList.add(`from-${randomColor}-400`, `to-${randomColor}-600`);
+                    linkElement.classList.add(`text-${randomColor}-600`, `dark:text-${randomColor}-400`);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    removeDynamicColorClasses(iconElement);
+                    removeDynamicColorClasses(borderElement);
+                    removeDynamicColorClasses(linkElement);
+
+                    // Re-add the original classes including the category's specific color classes
+                    iconElement.classList.add(...initialIconClasses, `bg-${cat.color}-100`, `dark:bg-${cat.color}-900/20`);
+                    borderElement.classList.add(...initialBorderClasses, `from-${cat.color}-400`, `to-${cat.color}-600`);
+                    linkElement.classList.add(...initialLinkClasses, `text-${cat.color}-600`, `dark:text-${cat.color}-400`);
+                });
+
+
+                grid.appendChild(card);
+            });
+
+            // Only show button if there are hidden categories to browse
+            if (categories.length > initialCategoryShowCount) {
+                showMoreBtn.style.display = 'inline-flex';
+            } else {
+                showMoreBtn.style.display = 'none';
+            }
+        }
+
+        function renderJobs(count) {
+            const grid = document.getElementById('jobsGrid');
+            grid.innerHTML = ''; // Clear existing jobs
+            const loadMoreBtn = document.getElementById('loadMoreJobs');
+
+            jobs.slice(0, count).forEach(job => {
+                const category = categories.find(c => c.name === job.category);
+                const card = document.createElement('div');
+                card.className = 'job-card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300';
+                card.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-${category.color}-100 dark:bg-${category.color}-900/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-${category.icon} ${category.iconClass} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800 dark:text-white">${job.title}</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm">${job.category}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">${job.desc}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">${job.rate}</span>
+                            <button class="px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Hide load more button if all jobs are displayed
+            if (count >= jobs.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-flex'; // Use inline-flex as defined in CSS
+            }
+        }
+
+        function initJobs() {
+            renderJobs(jobsToShow); // Render initial set of jobs
+        }
+
+        loadMoreBtn.addEventListener('click', function() {
+            jobsToShow += 6; // Load 6 more jobs
+            renderJobs(jobsToShow);
+
+ 
             this.classList.add('animate-pulse');
             setTimeout(() => {
                 this.classList.remove('animate-pulse');
             }, 300);
         });
-    } else {
-        showMoreBtn.style.display = 'none';
-    }
-}
-            function initJobs() {
-                const grid = document.getElementById('jobsGrid');
-                jobs.slice(0, 6).forEach(job => {
-                    const category = categories.find(c => c.name === job.category);
-                    const card = document.createElement('div');
-                    card.className = 'job-card';
-                    card.innerHTML = `
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-16 h-16 bg-${category.color}-100 dark:bg-${category.color}-900/20 rounded-lg flex items-center justify-center mr-4">
-                                    <i class="fas fa-${category.icon} ${category.iconClass} text-xl"></i> <!-- Adjusted icon size for job cards -->
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-800 dark:text-white">${job.title}</h3>
-                                    <p class="text-gray-600 dark:text-gray-300 text-sm">${job.category}</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">${job.desc}</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">${job.rate}</span>
-                                <button class="px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition">
-                                    Apply Now
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
 
-            function initCategoryFilter() {
-                const filter = document.getElementById('jobCategoryFilter');
-                categories.forEach(cat => {
-                    const option = document.createElement('option');
-                    option.value = cat.name;
-                    option.textContent = cat.name;
-                    filter.appendChild(option);
-                });
-            }
-        });
-    </script>
+        function initCategoryFilter() {
+            const filter = document.getElementById('jobCategoryFilter');
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                filter.appendChild(option);
+            });
+        }
+    });
+</script>
 </body>
 </html>

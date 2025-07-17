@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Sessions | SkillSync🎓</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .course-card {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .course-card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+        
+        .chatbot-icon {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .payment-modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .payment-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="dashboard.html" class="text-xl font-bold text-green-600 dark:text-green-500 flex items-center">
+                        <span>SkillSync🎓</span>
+                        <span class="ml-2 text-sm bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">Learning</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                    </button>
+                    <button id="chatbotToggle" class="chatbot-icon p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnBqbXQzdGtxMTdxMzlmM2tsZm00Nm1tNzV2MTB4bnB0ejkzZ240MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FMs0etbSROFzWiDYhW/giphy.gif" 
+                             alt="Chatbot" 
+                             class="w-12 h-12 rounded-full object-cover">
+                    </button>
+                    <span id="current-user-id" class="text-gray-700 dark:text-gray-200 text-sm"></span>
+                    <button id="sign-out-btn" class="flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Learning Center</h1>
+                <p class="text-gray-600 dark:text-gray-300">Enhance your skills with our premium courses</p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Browse Courses by Category</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="course-list">
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzRpcTliYWRmNDI0ZHQ3NWJyaDJ3amFmNmhkNHF5N2p5ZndvN3N3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/73kKE9yqx9gSZDaB2e/giphy.gif" 
+                             alt="Web Development" 
+                             class="w-full h-48 object-cover">
+                        <span class="course-badge bg-yellow-400 text-yellow-800 text-xs font-bold px-3 py-1 rounded-full">BESTSELLER</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Web Development</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$99</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Master HTML, CSS, JavaScript and modern frameworks like React and Vue.js</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.8 (1.2k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('web-development')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('web-development')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnhleHA4OXVrbWc3N3psODJoZXczZ21vOXZmcGVzZTJuc2Vydnc4NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sgdRf53O95BjsOgJkU/giphy.gif" 
+                             alt="Mobile App Development" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Mobile App Development</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$129</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Build iOS and Android apps with Flutter and React Native</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.7 (890 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('mobile-development')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('mobile-development')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                       <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnRlMDQ2NXJ3dW44cjVqc2RrMXQ3NWNmOHllYXhmZ29mdjc0czVrdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/i229PTC8BKt9V9RnwZ/giphy.gif" 
+                             alt="Software Development" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Software Development</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$149</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn software engineering principles and build scalable applications</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.9 (1.5k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('software-development')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('software-development')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHdxOHYwOXNkb3QzeWxmeWpkN2U5c21tem9lMmllZjRidjM2Y2ZteSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/78XCFBGOlS6keY1Bil/giphy.gif" 
+                             alt="Cybersecurity" 
+                             class="w-full h-48 object-cover">
+                        <span class="course-badge bg-red-400 text-red-800 text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Cybersecurity</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$179</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn to protect systems from digital attacks and secure networks</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.6 (750 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('cybersecurity')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('cybersecurity')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm5jMnlkd2FnMmNienh4dXV2d2o1ZGplazBqdXJ3cjFmbHV3Y2M4aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITRemFlr5tS39AzQUL/giphy.gif" 
+                             alt="AI & Machine Learning" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">AI & Machine Learning</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$199</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Master AI concepts and build machine learning models with Python</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.9 (2.1k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('ai-ml')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('ai-ml')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbndwZThsZG9kbWY5YnRvejl6cTZmaDYyN25hcndwMG9rZnJ3eTlpZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NgCrsvEuMlbpvTSlR0/giphy.gif" 
+                             alt="Data Science" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Data Science</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$169</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn data analysis, visualization, and machine learning with Python</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.8 (1.7k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('data-science')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('data-science')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXZucXlrbnF4Y3MzODBxcmYwNzJib21vM2c2dHc1YWhpdnA1dGFncyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fb8maSaKTj3WVy2gFQ/giphy.gif" 
+                             alt="AI Prompting" 
+                             class="w-full h-48 object-cover">
+                        <span class="course-badge bg-blue-400 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">TRENDING</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">AI Prompting</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$89</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Master the art of crafting effective prompts for AI systems</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.7 (920 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('ai-prompting')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('ai-prompting')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3R5NWhqc2h3cDZxbHJ0MnRyMHNpcTY3cmZnZHR5Y3UyZjhmbnV6OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SpopD7IQN2gK3qN4jS/giphy.gif" 
+                             alt="Website Builders" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">WordPress/Shopify/Wix</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$109</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Build professional websites without coding using popular platforms</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.6 (850 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('website-builders')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('website-builders')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2pjNnYzdDkwZTBlbWdzODJiOXQxaGxjcW5yaXg2OWp4NHFwdDZoaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pqMSyHmekA1Qe7Utp7/giphy.gif" 
+                             alt="Bug Fixing" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Bug Fixing / Debugging</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$119</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn professional debugging techniques and error resolution</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.8 (1.0k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('bug-fixing')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('bug-fixing')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW15eG8zeWxuaWx3eXE4eHNpcTBnczBjMWlicXlycTh0eGxnMmM1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6fZ9WNtjNd3Ta2qUVe/giphy.gif" 
+                             alt="Data Science & Analytics" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Data Science & Analytics</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$159</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Advanced data analysis techniques and business intelligence</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.9 (1.3k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('data-analytics')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('data-analytics')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTRpcW4yZWh4NzNzcDM4NWQ2ajh4Z3BtZG1vZmg4cHdodWN2cjIxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hqxnx2qZ3tzNXD14Fh/giphy.gif" 
+                             alt="Game Development" 
+                             class="w-full h-48 object-cover">
+                            <span class="course-badge bg-purple-400 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">HOT</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Game Development</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$149</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Create games with Unity and Unreal Engine</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.7 (1.1k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('game-dev')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('game-dev')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY21oYWdodGIxbTFkcTh4dW1qbzVoYmMzZDEzbWd5MnpoY3JjY2NwOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CTeLyRjYBcZRcXfyn5/giphy.gif" 
+                             alt="DevOps / Cloud" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">DevOps / Cloud Services</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$179</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Master CI/CD, Docker, Kubernetes and cloud platforms</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.8 (1.4k reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('devops')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('devops')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmNxOHN1aHpqOTJ5cXc4c3V6bGl1ajJ5bjI2a3l1M2kxcTRmeHR2OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QpVUMRUJGokfqXyfa1/giphy.gif" 
+                             alt="Database Design" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Database Design</h3>
+                            <span class="text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">$129</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn SQL, NoSQL and database optimization techniques</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span>4.7 (950 reviews)</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="showCourseDemo('database')" class="px-3 py-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    Demo
+                                </button>
+                                <button onclick="showPaymentModal('database')" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition">
+                                    Enroll
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <div class="text-center mt-8">
+    <button id="moreCoursesBtn" onclick="toggleMoreCourses()" 
+            class="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 font-medium flex items-center justify-center mx-auto group">
+        <span id="buttonText">More Courses</span>
+        <i id="buttonIcon" class="fas fa-chevron-down ml-2 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+    </button>
+</div>
+        </div>
+    </main>
+
+    <div id="paymentModal" class="payment-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Enroll in Course</h3>
+                <button onclick="hidePaymentModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mb-6">
+                <p class="text-gray-600 dark:text-gray-300 mb-2">You're enrolling in:</p>
+                <h4 id="courseTitle" class="text-lg font-semibold text-gray-800 dark:text-white mb-4"></h4>
+                <p id="coursePrice" class="text-2xl font-bold text-purple-600 dark:text-purple-400"></p>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 dark:text-gray-300 mb-2">Payment Method</label>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <input type="radio" name="paymentMethod" checked class="text-purple-600 focus:ring-purple-500">
+                        <i class="fab fa-cc-visa text-2xl text-blue-500"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Credit/Debit Card</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <input type="radio" name="paymentMethod" class="text-purple-600 focus:ring-purple-500">
+                        <i class="fab fa-paypal text-2xl text-blue-400"></i>
+                        <span class="text-gray-700 dark:text-gray-300">PayPal</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <input type="radio" name="paymentMethod" class="text-purple-600 focus:ring-purple-500">
+                        <img src="https://freelogopng.com/images/all_img/1656235223bkash-logo.png" alt="Bkash" class="w-6 h-6">
+                        <span class="text-gray-700 dark:text-gray-300">Bkash</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <input type="radio" name="paymentMethod" class="text-purple-600 focus:ring-purple-500">
+                        <img src="https://nagad.com.bd/favicon.ico" alt="Nagad" class="w-6 h-6">
+                        <span class="text-gray-700 dark:text-gray-300">Nagad</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <input type="radio" name="paymentMethod" class="text-purple-600 focus:ring-purple-500">
+                        <img src="https://www.dutchbanglabank.com/favicon.ico" alt="Rocket" class="w-6 h-6">
+                        <span class="text-gray-700 dark:text-gray-300">Rocket</span>
+                    </label>
+                </div>
+            </div>
+            <button onclick="processPayment()" class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium">
+                Complete Payment
+            </button>
+        </div>
+    </div>
+
+    <div id="demoModal" class="payment-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="demoCourseTitle" class="text-xl font-bold text-gray-800 dark:text-white">Course Demo</h3>
+                <button onclick="hideDemoModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="aspect-w-16 aspect-h-9 mb-4">
+                <iframe id="demoVideo" class="w-full h-96 rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="text-center">
+                <button onclick="hideDemoModal()" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium">
+                    Close Demo
+                </button>
+                <button onclick="hideDemoModal(); showPaymentModal(currentDemoCourse)" class="px-6 py-2 ml-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Chatbot toggle
+        document.getElementById('chatbotToggle').addEventListener('click', function() {
+            window.location.href = 'chatbot.html';
+        });
+
+        // Sign out functionality
+        document.getElementById('sign-out-btn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // More courses toggle
+        function toggleMoreCourses() {
+            const moreCoursesBtn = document.getElementById('moreCoursesBtn');
+            const courseItems = document.querySelectorAll('.course-card'); // Select ALL course cards
+            const initialVisibleCount = 6;
+            let isExpanded = moreCoursesBtn.dataset.expanded === 'true';
+
+            if (isExpanded) {
+                // Currently expanded, so collapse
+                courseItems.forEach((item, index) => {
+                    if (index >= initialVisibleCount) {
+                        item.classList.add('hidden'); // Use Tailwind's 'hidden' class
+                    }
+                });
+                moreCoursesBtn.innerHTML = 'More Courses <i class="fas fa-chevron-down ml-2"></i>';
+                moreCoursesBtn.dataset.expanded = 'false';
+            } else {
+                // Currently collapsed, so expand
+                courseItems.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+                moreCoursesBtn.innerHTML = 'Fewer Courses <i class="fas fa-chevron-up ml-2"></i>';
+                moreCoursesBtn.dataset.expanded = 'true';
+            }
+        }
+
+        // Initialize courses visibility on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const moreCoursesBtn = document.getElementById('moreCoursesBtn');
+            moreCoursesBtn.dataset.expanded = 'false'; // Set initial state
+            const courseItems = document.querySelectorAll('.course-card');
+            const initialVisibleCount = 6;
+
+            courseItems.forEach((item, index) => {
+                if (index >= initialVisibleCount) {
+                    item.classList.add('hidden'); // Hide courses beyond the first 6 initially
+                }
+            });
+        });
+
+        // Payment modal functionality
+        let currentCourse = '';
+        let currentDemoCourse = '';
+
+        function showPaymentModal(course) {
+            currentCourse = course;
+            const modal = document.getElementById('paymentModal');
+            const courseTitle = document.getElementById('courseTitle');
+            const coursePrice = document.getElementById('coursePrice');
+            
+            // Set course details based on selection
+            switch(course) {
+                case 'web-development':
+                    courseTitle.textContent = 'Web Development Masterclass';
+                    coursePrice.textContent = '$99';
+                    break;
+                case 'mobile-development':
+                    courseTitle.textContent = 'Mobile App Development Bootcamp';
+                    coursePrice.textContent = '$129';
+                    break;
+                case 'software-development':
+                    courseTitle.textContent = 'Software Engineering Fundamentals';
+                    coursePrice.textContent = '$149';
+                    break;
+                case 'cybersecurity':
+                    courseTitle.textContent = 'Cybersecurity Professional';
+                    coursePrice.textContent = '$179';
+                    break;
+                case 'ai-ml':
+                    courseTitle.textContent = 'AI & Machine Learning Specialist';
+                    coursePrice.textContent = '$199';
+                    break;
+                case 'data-science':
+                    courseTitle.textContent = 'Data Science Career Track';
+                    coursePrice.textContent = '$169';
+                    break;
+                case 'ai-prompting':
+                    courseTitle.textContent = 'AI Prompting Mastery';
+                    coursePrice.textContent = '$89';
+                    break;
+                case 'website-builders':
+                    courseTitle.textContent = 'Website Builders Course';
+                    coursePrice.textContent = '$109';
+                    break;
+                case 'bug-fixing':
+                    courseTitle.textContent = 'Bug Fixing & Debugging';
+                    coursePrice.textContent = '$119';
+                    break;
+                case 'data-analytics':
+                    courseTitle.textContent = 'Data Science & Analytics';
+                    coursePrice.textContent = '$159';
+                    break;
+                case 'game-dev':
+                    courseTitle.textContent = 'Game Development';
+                    coursePrice.textContent = '$149';
+                    break;
+                case 'devops':
+                    courseTitle.textContent = 'DevOps & Cloud Services';
+                    coursePrice.textContent = '$179';
+                    break;
+                case 'database':
+                    courseTitle.textContent = 'Database Design';
+                    coursePrice.textContent = '$129';
+                    break;
+                default:
+                    courseTitle.textContent = 'Premium Course';
+                    coursePrice.textContent = '$99';
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function hidePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+       function processPayment() {
+
+    alert('Payment processed successfully! You will be redirected to your premium courses.');
+
+    hidePaymentModal();
+    setTimeout(function() {
+        window.location.href = 'Premium_Courses.html';
+    }, 1000); 
+}
+        function showCourseDemo(course) {
+            currentDemoCourse = course;
+            const modal = document.getElementById('demoModal');
+            const demoTitle = document.getElementById('demoCourseTitle');
+            const demoVideo = document.getElementById('demoVideo');
+            
+            // Set demo details based on selection
+            switch(course) {
+                case 'web-development':
+                    demoTitle.textContent = 'Web Development Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/pQN-pnXPaVg';
+                    break;
+                case 'mobile-development':
+                    demoTitle.textContent = 'Mobile App Development Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/mU6anWqZJcc';
+                    break;
+                case 'software-development':
+                    demoTitle.textContent = 'Software Development Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/EjavYOFoJJ0';
+                    break;
+                case 'cybersecurity':
+                    demoTitle.textContent = 'Cybersecurity Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/inWWhr5tnEA';
+                    break;
+                case 'ai-ml':
+                    demoTitle.textContent = 'AI & Machine Learning Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/JB8T3GXHSTU';
+                    break;
+                case 'data-science':
+                    demoTitle.textContent = 'Data Science Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/ua-CiDNNj30';
+                    break;
+                case 'ai-prompting':
+                    demoTitle.textContent = 'AI Prompting Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/bixR-KIJKYM';
+                    break;
+                case 'website-builders':
+                    demoTitle.textContent = 'Website Builders Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/WONZVnlam6U';
+                    break;
+                case 'bug-fixing':
+                    demoTitle.textContent = 'Bug Fixing Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/7YXXV5qQZqo';
+                    break;
+                case 'data-analytics':
+                    demoTitle.textContent = 'Data Analytics Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/7YXXV5qQZqo';
+                    break;
+                case 'game-dev':
+                    demoTitle.textContent = 'Game Development Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/7YXXV5qQZqo';
+                    break;
+                case 'devops':
+                    demoTitle.textContent = 'DevOps Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/7YXXV5qQZqo';
+                    break;
+                case 'database':
+                    demoTitle.textContent = 'Database Design Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/7YXXV5qQZqo';
+                    break;
+                default:
+                    demoTitle.textContent = 'Course Demo';
+                    demoVideo.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function hideDemoModal() {
+            const demoVideo = document.getElementById('demoVideo');
+            const currentSrc = demoVideo.src;
+            demoVideo.src = '';
+            demoVideo.src = currentSrc;
+            document.getElementById('demoModal').classList.remove('active');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const paymentModal = document.getElementById('paymentModal');
+            const demoModal = document.getElementById('demoModal');
+            
+            if (event.target === paymentModal) {
+                hidePaymentModal();
+            }
+            
+            if (event.target === demoModal) {
+                hideDemoModal();
+            }
+        });
+    </script>
+</body>
+</html>

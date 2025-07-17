@@ -369,4 +369,16 @@
     .category-card .p-4 {
         padding: 1.25rem;
     }
+
+.filter-dropdown {
+    @apply w-full px-4 py-2.5 pr-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 appearance-none;
+}
+
+.load-more-btn {
+    @apply px-8 py-3 bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
+}
+
+.job-card {
+    @apply transition-all duration-300;
+}
 }
