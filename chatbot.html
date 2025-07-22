@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chatbot👻</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .chatbot-container {
+    border: 1px solid;
+    border-image: linear-gradient(145deg, rgba(168,85,247,0.3), rgba(236,72,153,0.2), rgba(99,102,241,0.2)) 1;
+    box-shadow: 
+      0 0 0 1px rgba(255,255,255,0.1) inset,
+      0 10px 30px -10px rgba(99,102,241,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chatbot-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(145deg, rgba(168,85,247,0.15), rgba(236,72,153,0.1), rgba(99,102,241,0.1));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .dark .chatbot-container {
+    border-image: linear-gradient(145deg, rgba(168,85,247,0.5), rgba(236,72,153,0.3), rgba(99,102,241,0.3)) 1;
+    box-shadow: 
+      0 0 0 1px rgba(0,0,0,0.2) inset,
+      0 10px 30px -10px rgba(99,102,241,0.25);
+  }
+
+  .dark .chatbot-container::before {
+    background: linear-gradient(145deg, rgba(168,85,247,0.3), rgba(236,72,153,0.2), rgba(99,102,241,0.2));
+  }
+</style>
+<link rel="stylesheet" href="chatbot.css" />
+</head>
+<body class="dark:bg-gray-900 dark:text-white">
+
+<div class="chatbot-container" role="main" aria-label="Chatbot Interface">
+  <header class="chatbot-header flex justify-between items-center p-4">
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="chatbot-header-icon w-6 h-6">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+      </svg>
+      <h1 class="chatbot-title ml-2">AI Assistant</h1>
+    </div>
+    <button id="theme-toggle" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
+      <span id="light-icon" class="hidden">🌞</span>
+      <span id="dark-icon">🌙</span>
+    </button>
+  </header>
+
+  <section class="chatbot-messages" id="messages" aria-live="polite" aria-relevant="additions text">
+    <div class="message-bubble bot" role="status">
+      <div class="avatar" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="message-content">
+        <p>Hello there! How can I assist you today?</p>
+      </div>
+    </div>
+  </section>
+
+  <form id="chat-form" class="chatbot-input-area" aria-label="Send message">
+    <input
+      type="text"
+      id="chat-input"
+      class="chatbot-input"
+      placeholder="Type your message..."
+      autocomplete="off"
+      aria-label="Message input field"
+    />
+
+    <div class="input-actions">
+      <button
+        type="button"
+        id="emoji-btn"
+        class="icon-button"
+        aria-label="Insert emoji"
+        title="Insert emoji"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22c5.421 0 10-4.579 10-10S17.421 2 12 2 2 6.579 2 12s4.579 10 10 10zm0-18a8 8 0 110 16 8 8 0 010-16zM7.5 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm9 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-9.58 7.1a5.25 5.25 0 008.16 0 .75.75 0 10-1.16-.95 3.749 3.749 0 01-5.86 0 .75.75 0 10-1.14.95z"/>
+        </svg>
+      </button>
+
+      <label
+        for="image-upload"
+        class="icon-button"
+        aria-label="Upload image"
+        title="Upload image"
+        tabindex="0"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 20h14v-2H5v2zm14-6V8a2 2 0 00-2-2H7a2 2 0 00-2 2v6h14zm-7-3a2 2 0 110-4 2 2 0 010 4z"/>
+        </svg>
+      </label>
+      <input
+        type="file"
+        id="image-upload"
+        accept="image/*"
+        class="hidden"
+      />
+    </div>
+
+    <button type="submit" class="send-button" aria-label="Send message">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="send-icon">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const lightIcon = document.getElementById('light-icon');
+  const darkIcon = document.getElementById('dark-icon');
+
+  if (localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    lightIcon.classList.remove('hidden');
+    darkIcon.classList.add('hidden');
+  } else {
+    document.documentElement.classList.remove('dark');
+    lightIcon.classList.add('hidden');
+    darkIcon.classList.remove('hidden');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+      lightIcon.classList.remove('hidden');
+      darkIcon.classList.add('hidden');
+    } else {
+      localStorage.setItem('theme', 'light');
+      lightIcon.classList.add('hidden');
+      darkIcon.classList.remove('hidden');
+    }
+  });
+</script>
+<script src="chatbot.js"></script>
+</body>
+</html>

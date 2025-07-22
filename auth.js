@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (form) {
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // prevent actual page reload
+            e.preventDefault(); 
 
             const inputs = form.querySelectorAll('input');
             let isEmpty = false;
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Optional: Add password toggle
     const passwordField = document.querySelector('input[type="password"]');
     const toggleIcon = document.getElementById('togglePassword');
 

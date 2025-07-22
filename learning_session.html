@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Sessions | SkillSync🎓</title>
+    <title>Learning Sessions | ScholarsGig🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -81,13 +81,19 @@
         
     </style>
 </head>
+<iframe id="chatbotFrame"
+    src="chatbot.html"
+    class="fixed bottom-6 right-6 w-96 h-[80vh] rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hidden z-50"
+    style="z-index: 1000;"></iframe>
+
+
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
     <nav class="bg-white dark:bg-gray-800 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <a href="dashboard.html" class="text-xl font-bold text-green-600 dark:text-green-500 flex items-center">
-                        <span>SkillSync🎓</span>
+                        <span>ScholarsGig🎓</span>
                         <span class="ml-2 text-sm bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">Learning</span>
                     </a>
                 </div>
@@ -97,7 +103,7 @@
                         <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
                     </button>
                     <button id="chatbotToggle" class="chatbot-icon p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnBqbXQzdGtxMTdxMzlmM2tsZm00Nm1tNzV2MTB4bnB0ejkzZ240MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FMs0etbSROFzWiDYhW/giphy.gif" 
+                        <img src="images/Bot.png " 
                              alt="Chatbot" 
                              class="w-12 h-12 rounded-full object-cover">
                     </button>
@@ -600,10 +606,11 @@
             document.documentElement.classList.add('dark');
         }
 
-        // Chatbot toggle
-        document.getElementById('chatbotToggle').addEventListener('click', function() {
-            window.location.href = 'chatbot.html';
-        });
+       document.getElementById('chatbotToggle').addEventListener('click', function () {
+    const iframe = document.getElementById('chatbotFrame');
+    iframe.classList.toggle('hidden'); // toggle visibility
+});
+
 
         // Sign out functionality
         document.getElementById('sign-out-btn').addEventListener('click', function() {
@@ -811,19 +818,27 @@
             document.getElementById('demoModal').classList.remove('active');
         }
 
-        // Close modals when clicking outside
-        window.addEventListener('click', function(event) {
-            const paymentModal = document.getElementById('paymentModal');
-            const demoModal = document.getElementById('demoModal');
-            
-            if (event.target === paymentModal) {
-                hidePaymentModal();
-            }
-            
-            if (event.target === demoModal) {
-                hideDemoModal();
-            }
-        });
-    </script>
+       // Close modals when clicking outside
+window.addEventListener('click', function(event) {
+    const paymentModal = document.getElementById('paymentModal');
+    const demoModal = document.getElementById('demoModal');
+    
+    if (event.target === paymentModal) {
+        hidePaymentModal();
+    }
+    
+    if (event.target === demoModal) {
+        hideDemoModal();
+    }
+});
+
+// Listen for messages from chatbot.html iframe
+window.addEventListener('message', function (event) {
+    if (event.data === 'closeChatbot') {
+        const iframe = document.getElementById('chatbotFrame');
+        if (iframe) iframe.classList.add('hidden');
+    }
+});
+ </script>
 </body>
 </html>

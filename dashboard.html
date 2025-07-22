@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Dashboard | SkillSync🎓</title>
+    <title>Job Dashboard | ScholarsGig🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,14 +29,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-green-600 dark:text-green-500">SkillSync🎓</span>
+                    <span class="text-xl font-bold text-green-600 dark:text-green-500">ScholarsGig🎓</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
                         <i class="fas fa-moon dark:hidden"></i>
                         <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
                     </button>
-                    <!-- User Info and Sign Out (Dynamically updated by script.js) -->
                     <span id="current-user-id-dashboard" class="text-gray-700 dark:text-gray-200 text-sm"></span>
                     <button id="sign-out-btn-dashboard" class="flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
                         <i class="fas fa-sign-out-alt mr-2"></i>Sign Out
@@ -48,7 +47,6 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <!-- Welcome Section & Learning Session Button -->
         <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
                 <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Welcome back, Nishat!</h1>
@@ -61,11 +59,9 @@
             </div>
         </div>
 
-        <!-- Categories Grid -->
         <div class="mb-12 category-section">
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 relative z-10">Browse by Category</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 relative z-10" id="categoriesGrid">
-                <!-- Categories will be loaded here by JavaScript -->
             </div>
            <div class="text-center mt-6 relative z-10">
     <button id="showMoreCategories" class="browse-more-btn">
@@ -75,7 +71,6 @@
 </div>
         </div>
 
-<!-- Update the Available Jobs section header (replace the existing one) -->
 <div class="mb-12">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div class="relative group">
@@ -134,21 +129,21 @@
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-gray-500 dark:text-gray-400 text-sm">
-                &copy; 2023 SkillSync🎓. All rights reserved.
+                &copy; 2023 ScholarsGig🎓. All rights reserved.
             </p>
         </div>
     </footer>
 <script type="module" src="script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Theme toggle functionality
+  
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
         });
 
-        // Check for saved theme preference
+     
         if (localStorage.getItem('theme') === 'dark' ||
             (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -158,7 +153,6 @@
             window.location.href = 'index.html';
         });
 
-        // Categories data with more elegant icons and colors
         const categories = [
             { name: "Web Development", icon: "code", color: "green", iconClass: "text-green-600" },
             { name: "Mobile App Development", icon: "mobile-screen-button", color: "blue", iconClass: "text-blue-600" },
@@ -174,7 +168,6 @@
             { name: "AI Prompting", icon: "comments", color: "violet", iconClass: "text-violet-600" }
         ];
 
-        // Jobs data (kept same as before)
         const jobs = [
             { title: "Frontend Developer", category: "Web Development", desc: "Build responsive web applications with React", rate: "$50-$80/hr" },
             { title: "iOS Developer", category: "Mobile App Development", desc: "Develop iOS apps using Swift", rate: "$60-$90/hr" },
@@ -190,14 +183,13 @@
             { title: "AI Prompt Engineer", category: "AI Prompting", desc: "Create effective AI prompts", rate: "$55-$85/hr" }
         ];
 
-        // Variable to keep track of currently displayed jobs
         let jobsToShow = 6;
         const loadMoreBtn = document.getElementById('loadMoreJobs');
 
 
         // Initialize UI
         initCategories();
-        initJobs(); // Call initJobs to display the initial set of jobs
+        initJobs(); 
         initCategoryFilter();
 
         document.getElementById('showMoreCategories').addEventListener('click', function() {
@@ -209,29 +201,27 @@
             const icon = this.querySelector('i');
             const textSpan = this.querySelector('.browse-more-text');
 
-            // Determine if all categories are currently visible based on button text
             const currentlyShowingAllCategories = (textSpan.textContent === 'Show Less Categories');
 
             if (!currentlyShowingAllCategories) {
-                // Show hidden categories
                 for (let i = initialCategoryShowCount; i < allCategoryCards.length; i++) {
-                    allCategoryCards[i].style.display = 'block'; // Ensure it's block
+                    allCategoryCards[i].style.display = 'block'; 
                     allCategoryCards[i].classList.remove('hidden-category');
-                    allCategoryCards[i].classList.add('visible-category'); // Add fade-in animation
+                    allCategoryCards[i].classList.add('visible-category'); 
                 }
                 textSpan.textContent = 'Show Less Categories';
                 icon.classList.add('rotate-180');
             } else {
-                // Hide the extra categories
+ 
                 for (let i = initialCategoryShowCount; i < allCategoryCards.length; i++) {
-                    allCategoryCards[i].classList.remove('visible-category'); // Remove fade-in animation class
+                    allCategoryCards[i].classList.remove('visible-category'); 
                     allCategoryCards[i].classList.add('hidden-category');
-                    allCategoryCards[i].style.display = 'none'; // Explicitly hide
+                    allCategoryCards[i].style.display = 'none'; 
                 }
                 textSpan.textContent = 'Browse More Categories';
                 icon.classList.remove('rotate-180');
             }
-             // Add pulse animation on click
+
             button.classList.add('animate-pulse');
             setTimeout(() => {
                 button.classList.remove('animate-pulse');
@@ -242,8 +232,7 @@
             const grid = document.getElementById('categoriesGrid');
             const showMoreBtn = document.getElementById('showMoreCategories');
             const initialCategoryShowCount = 8;
-            
-            // Clear the grid before populating to prevent duplicates if called multiple times
+
             grid.innerHTML = '';
             
             const categoryImages = {
@@ -282,7 +271,7 @@
 
                 card.className = `category-card ${isHidden ? 'hidden-category' : ''}`;
                 if (isHidden) {
-                    card.style.display = 'none'; // Initially hide beyond the count
+                    card.style.display = 'none'; 
                 }
 
                 card.innerHTML = `
@@ -308,11 +297,9 @@
                 const borderElement = card.querySelector('.h-1');
                 const linkElement = card.querySelector('a');
 
-                // Define all possible color prefixes to remove
                 const colorPrefixes = ['bg-', 'dark:bg-', 'from-', 'to-', 'text-'];
-                const allColors = ['red', 'blue', 'green', 'purple', 'pink', 'indigo', 'yellow', 'amber', 'rose', 'sky', 'teal', 'violet', 'orange']; // Include all colors used
+                const allColors = ['red', 'blue', 'green', 'purple', 'pink', 'indigo', 'yellow', 'amber', 'rose', 'sky', 'teal', 'violet', 'orange']; 
 
-                // Helper function to remove classes starting with specific prefixes and including any defined color
                 function removeDynamicColorClasses(element) {
                     Array.from(element.classList).forEach(cls => {
                         if (colorPrefixes.some(prefix => cls.startsWith(prefix)) && allColors.some(color => cls.includes(color))) {
@@ -321,8 +308,7 @@
                     });
                 }
                 
-                // Store initial classes for proper revert on mouseleave
-                // Capture classes excluding dynamic color ones that will be re-added
+    
                 const initialIconClasses = Array.from(iconElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
                 const initialBorderClasses = Array.from(borderElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
                 const initialLinkClasses = Array.from(linkElement.classList).filter(cls => !colorPrefixes.some(prefix => cls.startsWith(prefix)) || !allColors.some(color => cls.includes(color)));
@@ -394,20 +380,19 @@
                 grid.appendChild(card);
             });
 
-            // Hide load more button if all jobs are displayed
             if (count >= jobs.length) {
                 loadMoreBtn.style.display = 'none';
             } else {
-                loadMoreBtn.style.display = 'inline-flex'; // Use inline-flex as defined in CSS
+                loadMoreBtn.style.display = 'inline-flex'; 
             }
         }
 
         function initJobs() {
-            renderJobs(jobsToShow); // Render initial set of jobs
+            renderJobs(jobsToShow); 
         }
 
         loadMoreBtn.addEventListener('click', function() {
-            jobsToShow += 6; // Load 6 more jobs
+            jobsToShow += 6;
             renderJobs(jobsToShow);
 
  
