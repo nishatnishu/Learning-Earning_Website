@@ -4,6 +4,9 @@ const chatForm = document.getElementById('chat-form');
 const emojiBtn = document.getElementById('emoji-btn');
 const imageUpload = document.getElementById('image-upload');
 let typingBubble = null; 
+let uploadedImageBase64 = null;
+let uploadedImageMimeType = null;
+
 
 const themeToggleBtn = document.getElementById('theme-toggle-btn');
 const sunIcon = document.querySelector('.sun-icon');
@@ -115,6 +118,40 @@ async function getGeminiResponse(message) {
     return 'Apologies, something went wrong while connecting to the AI. Please try again later.';
   }
 }
+async function getGeminiResponseWithImage(imageData, mimeType, textPrompt) {
+  try {
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                inlineData: {
+                  mimeType: mimeType,
+                  data: imageData
+                }
+              },
+              {
+                text: textPrompt
+              }
+            ]
+          }
+        ]
+      })
+    });
+
+    const data = await response.json();
+
+    const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Couldn't interpret the image + text.";
+    return botReply;
+
+  } catch (error) {
+    console.error('Image+text API error:', error);
+    return "Something went wrong while analyzing image and prompt together.";
+  }
+}
 
 chatForm.addEventListener('submit', async e => {
   e.preventDefault();
@@ -122,14 +159,22 @@ chatForm.addEventListener('submit', async e => {
   if (!message) return;
 
   addMessage(message, true);
-  chatInput.value = ''; 
+  chatInput.value = '';
 
-  showTyping(); 
+  showTyping();
 
-  const botReply = await getGeminiResponse(message);
+  let botReply;
+
+  if (uploadedImageBase64) {
+    botReply = await getGeminiResponseWithImage(uploadedImageBase64, uploadedImageMimeType, message);
+    uploadedImageBase64 = null; 
+    uploadedImageMimeType = null;
+  } else {
+    botReply = await getGeminiResponse(message);
+  }
 
   hideTyping();
-  addMessage(botReply, false); 
+  addMessage(botReply, false);
 });
 
 chatInput.addEventListener('keydown', e => {
@@ -149,23 +194,29 @@ emojiBtn.addEventListener('click', () => {
   chatInput.focus();
 });
 
-imageUpload.addEventListener('change', e => {
+imageUpload.addEventListener('change', async e => {
   const file = e.target.files[0];
   if (!file) return;
 
   if (!file.type.startsWith('image/')) {
-    alert('Please upload an image file.'); 
-    e.target.value = ''; 
+    alert('Please upload an image file.');
+    e.target.value = '';
     return;
   }
 
   const reader = new FileReader();
   reader.onload = event => {
+    const base64 = event.target.result.split(',')[1];
+    uploadedImageBase64 = base64;
+    uploadedImageMimeType = file.type;
+
+    // Display image in chat
     addMessage(event.target.result, true, true);
   };
+
   reader.readAsDataURL(file);
-  e.target.value = ''; 
 });
+
 
 function toggleDarkMode() {
     const body = document.body;
