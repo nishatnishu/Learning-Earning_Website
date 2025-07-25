@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Platforms | SiliconCave🎓</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+ <script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: {
+                        600: '#16a34a',
+                        700: '#15803d',
+                    }, 
+                    lavender: {
+                        200: '#d8b4fe',
+                        300: '#c084fc',
+                    },
+                    sky: {
+                        200: '#bae6fd',
+                        300: '#7dd3fc',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['"Inter"', 'ui-sans-serif', 'system-ui'],
+                    'display': ['"Poppins"', 'ui-sans-serif']
+                },
+                textShadow: {
+                    'md': '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    'lg': '0 10px 15px rgba(0, 0, 0, 0.1)',
+                }
+            }
+        }
+    }
+</script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .job-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .dark .job-card {
+            border-color: rgba(255,255,255,0.05);
+        }
+        .application-modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .application-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .hidden-job {
+            display: none;
+        }
+         .logo-container {
+            height: 60px; 
+        }
+        .logo-img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+    <img src="images/Silicon_Cave_logo.png" 
+         alt="Silicon Cave Logo" 
+          class="h-8 md:h-15 w-auto mr-">
+    <span class="ml-2 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">Student Jobs</span>
+</div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                    </button>
+                    <span id="current-user-id-dashboard" class="text-gray-700 dark:text-gray-200 text-sm">Welcome, <span class="font-medium">Nishat</span></span>
+                    <button id="sign-out-btn-dashboard" class="flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+     <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 text-center md:text-left">
+   <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 tracking-tight mb-4 font-display">
+    Local Opportunities
+</h1>
+            
+            <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">Flexible Hours</span>
+                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">Student-Friendly</span>
+                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm">Verified Employers</span>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="mb-8 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" id="job-search" placeholder="Search jobs by title, company or location" class="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                </div>
+                <select id="job-type-filter" class="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                    <option value="all">All Types</option>
+                    <option value="offline">Offline Only</option>
+                    <option value="online">Online Only</option>
+                </select>
+                <select id="location-filter" class="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                    <option value="all">All Locations</option>
+                    <option value="dhaka">Dhaka</option>
+                    <option value="chittagong">Chittagong</option>
+                    <option value="sylhet">Sylhet</option>
+                    <option value="khulna">Khulna</option>
+                    <option value="remote">Remote</option>
+                </select>
+            </div>
+        </div>
+
+      <!-- Offline Platforms Section -->
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 font-display relative group">
+            <span class="relative z-10 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-lavender-300 dark:to-sky-300 bg-clip-text text-transparent">
+                Offline Platforms
+            </span>
+            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-purple-300/70 to-blue-300/70 dark:from-lavender-200/70 dark:to-sky-200/70 rounded-full transform origin-left transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
+            <span class="absolute -bottom-1 left-0 w-full h-px bg-gray-200/50 dark:bg-gray-600/50 rounded-full"></span>
+        </h2>
+        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-store mr-2"></i>
+            <span>Traditional retail and service jobs</span>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="offline-jobs-container">
+        <!-- Aarong -->
+        <div class="job-card offline-job" data-title="Sales Associate" data-company="Aarong" data-location="dhaka" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Aarong.png" 
+                     alt="Aarong Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+                <div class="absolute bottom-4 right-4">
+                    <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 px-2 py-1 rounded-full text-xs">Hiring Now</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Sales Associate</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Aarong
+                        </p>
+                    </div>
+                    <div class="bg-red-100 dark:bg-red-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-red-600 dark:text-red-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Assist customers, manage inventory, and maintain store presentation at Aarong outlets.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Retail</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Weekends</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳8,000 - ৳12,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Aarong Sales Associate">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Swapno -->
+        <div class="job-card offline-job" data-title="Cashier" data-company="Swapno" data-location="dhaka" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Swapno.png" 
+                     alt="Swapno Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Cashier</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Swapno
+                        </p>
+                    </div>
+                    <div class="bg-blue-100 dark:bg-blue-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Handle cash transactions, assist customers, and maintain checkout area at Swapno supermarkets.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Evening Shift</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Retail</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳7,000 - ৳10,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Swapno Cashier">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bata -->
+        <div class="job-card offline-job" data-title="Sales Representative" data-company="Bata" data-location="dhaka" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Bata.png" 
+                     alt="Bata Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+                <div class="absolute bottom-4 right-4">
+                    <span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-full text-xs">Urgent</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Sales Representative</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Bata
+                        </p>
+                    </div>
+                    <div class="bg-yellow-100 dark:bg-yellow-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-yellow-600 dark:text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Assist customers with footwear selection, process sales, and maintain store inventory.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Weekends</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Commission</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳9,000 - ৳15,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">+ incentives</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Bata Sales Representative">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Best Buy -->
+        <div class="job-card offline-job" data-title="Electronics Sales" data-company="Best Buy" data-location="dhaka,chittagong,sylhet" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/BestBuy.png" 
+                     alt="Best Buy Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+                <div class="absolute bottom-4 right-4">
+                    <span class="bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full text-xs">New</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Electronics Sales</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Best Buy
+                        </p>
+                    </div>
+                    <div class="bg-indigo-100 dark:bg-indigo-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-indigo-600 dark:text-indigo-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Assist customers with electronics purchases and demonstrate product features.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Tech Savvy</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Weekends</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳10,000 - ৳15,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">+ commission</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Best Buy Electronics Sales">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nice Price -->
+        <div class="job-card offline-job" data-title="Store Assistant" data-company="Nice Price" data-location="dhaka,chittagong,sylhet,khulna" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/NicePrice.png" 
+                     alt="Nice Price Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Store Assistant</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Nice Price
+                        </p>
+                    </div>
+                    <div class="bg-teal-100 dark:bg-teal-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-teal-600 dark:text-teal-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Maintain store organization, assist customers, and handle inventory at Nice Price outlets.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Retail</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳7,000 - ৳10,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Nice Price Store Assistant">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unilever -->
+        <div class="job-card offline-job" data-title="Promoter" data-company="Unilever" data-location="dhaka,chittagong,sylhet,khulna,rajshahi,barisal" data-type="offline">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Unilever.png" 
+                     alt="Unilever Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Promoter</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Unilever
+                        </p>
+                    </div>
+                    <div class="bg-violet-100 dark:bg-violet-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-violet-600 dark:text-violet-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Promote Unilever products in supermarkets and demonstrate product features.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Marketing</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Part-time</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳12,000 - ৳18,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Unilever Promoter">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!-- Online Platforms Section -->
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 font-display relative group">
+            <span class="relative z-10 bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 dark:from-[#5eead4] dark:via-[#6ee7b7] dark:to-[#67e8f9] bg-clip-text text-transparent">
+                Online Platforms
+            </span>
+            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-teal-300/70 via-emerald-300/70 to-cyan-300/70 dark:from-[#99f6e4]/70 dark:via-[#a7f3d0]/70 dark:to-[#a5f3fc]/70 rounded-full transform origin-left transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
+            <span class="absolute -bottom-1 left-0 w-full h-px bg-gray-200/50 dark:bg-gray-600/50 rounded-full"></span>
+        </h2>
+        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-laptop-code mr-2"></i>
+            <span>Remote and digital opportunities</span>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="online-jobs-container">
+        <!-- Daraz -->
+        <div class="job-card online-job" data-title="Customer Support" data-company="Daraz" data-location="remote" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Daraz.png" 
+                     alt="Daraz Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+                <div class="absolute bottom-4 right-4">
+                    <span class="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full text-xs">Remote</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Customer Support</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Daraz
+                        </p>
+                    </div>
+                    <div class="bg-orange-100 dark:bg-orange-900/20 p-2 rounded-lg">
+                        <i class="fas fa-globe text-orange-600 dark:text-orange-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Handle customer inquiries via chat and email for Daraz e-commerce platform.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Work From Home</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳6,000 - ৳10,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Daraz Customer Support">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pathao -->
+        <div class="job-card online-job" data-title="Delivery Rider" data-company="Pathao" data-location="dhaka" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Pathao.png" 
+                     alt="Pathao Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Delivery Rider</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Pathao
+                        </p>
+                    </div>
+                    <div class="bg-green-100 dark:bg-green-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-green-600 dark:text-green-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Deliver food and packages using your own transportation with flexible hours.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Own Bike</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Daily Pay</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳8,000 - ৳15,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">+ bonuses</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Pathao Delivery Rider">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foodpanda -->
+        <div class="job-card online-job" data-title="Customer Service" data-company="Foodpanda" data-location="dhaka" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Foodpanda.png" 
+                     alt="Foodpanda Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+                <div class="absolute bottom-4 right-4">
+                    <span class="bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-200 px-2 py-1 rounded-full text-xs">Popular</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Customer Service</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Foodpanda
+                        </p>
+                    </div>
+                    <div class="bg-pink-100 dark:bg-pink-900/20 p-2 rounded-lg">
+                        <i class="fas fa-headset text-pink-600 dark:text-pink-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Handle customer calls and resolve issues for Foodpanda delivery service.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Evening Shift</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Part-time</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳7,000 - ৳12,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Foodpanda Customer Service">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sheba.xyz -->
+        <div class="job-card online-job" data-title="Service Coordinator" data-company="Sheba.xyz" data-location="dhaka,chittagong" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Sheba_xyz.png" 
+                     alt="Sheba.xyz Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Service Coordinator</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Sheba.xyz
+                        </p>
+                    </div>
+                    <div class="bg-amber-100 dark:bg-amber-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-amber-600 dark:text-amber-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Coordinate service providers and customers for Sheba.xyz home services platform.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Part-time</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳8,000 - ৳12,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">per month</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Sheba.xyz Service Coordinator">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chaldal -->
+        <div class="job-card online-job" data-title="Delivery Associate" data-company="Chaldal" data-location="dhaka,chittagong" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Chaldal.png" 
+                     alt="Chaldal Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Delivery Associate</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Chaldal
+                        </p>
+                    </div>
+                    <div class="bg-emerald-100 dark:bg-emerald-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-emerald-600 dark:text-emerald-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Deliver groceries and household items for Chaldal's online delivery service.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Daily Pay</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳9,000 - ৳14,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">+ bonuses</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Chaldal Delivery Associate">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Uber -->
+        <div class="job-card online-job" data-title="Ride Partner" data-company="Uber" data-location="dhaka,chittagong,sylhet" data-type="online">
+            <div class="relative h-40 w-full bg-white dark:bg-gray-800 overflow-hidden">
+                <img src="images/Uber.png" 
+                     alt="Uber Logo" 
+                     class="absolute inset-0 w-full h-full object-contain p-4">
+            </div>
+            <div class="p-6">
+                <div class="flex items-start mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-white">Ride Partner</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm flex items-center">
+                            <i class="fas fa-building mr-1"></i> Uber
+                        </p>
+                    </div>
+                    <div class="bg-sky-100 dark:bg-sky-900/20 p-2 rounded-lg">
+                        <i class="fas fa-map-marker-alt text-sky-600 dark:text-sky-400"></i>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Drive passengers using your own vehicle with flexible hours through Uber platform.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Own Vehicle</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Flexible</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400 block">৳15,000 - ৳25,000</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">+ incentives</span>
+                    </div>
+                    <button class="apply-btn px-4 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition flex items-center" data-job="Uber Ride Partner">
+                        <i class="fas fa-paper-plane mr-2"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Application Modal -->
+    <div class="application-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">Apply for <span id="job-title"></span></h3>
+                    <button class="close-modal text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="application-form" class="space-y-4">
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+                        <input type="text" id="full-name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                    </div>
+                    
+                    <div>
+                        <label for="education" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Current Education Level</label>
+                        <select id="education" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                            <option value="">Select your education level</option>
+                            <option value="school">School Student</option>
+                            <option value="college">College Student</option>
+                            <option value="university">University Student</option>
+                            <option value="graduate">Graduate</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="availability" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Weekly Availability (hours)</label>
+                        <select id="availability" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                            <option value="">Select your availability</option>
+                            <option value="10-15">10-15 hours</option>
+                            <option value="15-20">15-20 hours</option>
+                            <option value="20-25">20-25 hours</option>
+                            <option value="25+">25+ hours</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="resume" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Resume (PDF)</label>
+                        <input type="file" id="resume" accept=".pdf" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300" required>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Upload your resume in PDF format</p>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-16 transition-transform duration-300 z-50 hidden">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Application submitted successfully!</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-center md:text-left text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2023 Silicon Cave🎓. All rights reserved.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            if (localStorage.getItem('theme') === 'dark' ||
+                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        
+            // Sign out
+            document.getElementById('sign-out-btn-dashboard').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+
+            // Application modal
+            const applyButtons = document.querySelectorAll('.apply-btn');
+            const modal = document.querySelector('.application-modal');
+            const jobTitleElement = document.getElementById('job-title');
+            const closeModalButton = document.querySelector('.close-modal');
+            const applicationForm = document.getElementById('application-form');
+            const successToast = document.getElementById('success-toast');
+
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const jobTitle = this.getAttribute('data-job');
+                    jobTitleElement.textContent = jobTitle;
+                    modal.classList.add('active');
+                });
+            });
+
+            closeModalButton.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Form submission
+            applicationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                modal.classList.remove('active');
+                
+                // Show success toast
+                successToast.classList.remove('hidden');
+                successToast.style.transform = 'translateY(0)';
+                
+                // Hide toast after 5 seconds
+                setTimeout(() => {
+                    successToast.style.transform = 'translateY(16rem)';
+                    setTimeout(() => {
+                        successToast.classList.add('hidden');
+                    }, 300);
+                }, 5000);
+                
+                // Reset form
+                this.reset();
+            });
+
+            // Search and filter functionality
+            const jobSearch = document.getElementById('job-search');
+            const jobTypeFilter = document.getElementById('job-type-filter');
+            const locationFilter = document.getElementById('location-filter');
+            const allJobCards = document.querySelectorAll('.job-card');
+
+            function filterJobs() {
+                const searchTerm = jobSearch.value.toLowerCase();
+                const typeFilter = jobTypeFilter.value;
+                const locationFilterValue = locationFilter.value;
+
+                allJobCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const company = card.getAttribute('data-company').toLowerCase();
+                    const type = card.getAttribute('data-type');
+                    const locations = card.getAttribute('data-location').split(',');
+
+                    const matchesSearch = title.includes(searchTerm) || company.includes(searchTerm);
+                    const matchesType = typeFilter === 'all' || type === typeFilter;
+                    const matchesLocation = locationFilterValue === 'all' || locations.includes(locationFilterValue);
+
+                    if (matchesSearch && matchesType && matchesLocation) {
+                        card.classList.remove('hidden-job');
+                    } else {
+                        card.classList.add('hidden-job');
+                    }
+                });
+            }
+
+            jobSearch.addEventListener('input', filterJobs);
+            jobTypeFilter.addEventListener('change', filterJobs);
+            locationFilter.addEventListener('change', filterJobs);
+        });
+    </script>
+</body>
+</html>

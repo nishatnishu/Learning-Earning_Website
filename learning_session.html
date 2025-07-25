@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Sessions | ScholarsGig🎓</title>
+    <title>Learning Sessions | Silicon Cave🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -92,11 +92,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <a href="dashboard.html" class="text-xl font-bold text-green-600 dark:text-green-500 flex items-center">
-                        <span>ScholarsGig🎓</span>
-                        <span class="ml-2 text-sm bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">Learning</span>
-                    </a>
-                </div>
+    <img src="images/Silicon_Cave_logo.png" 
+         alt="Silicon Cave Logo" 
+          class="h-8 md:h-15 w-auto mr-">
+   </div>
                 <div class="flex items-center space-x-4">
                     <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
                         <i class="fas fa-moon dark:hidden"></i>
@@ -608,33 +607,32 @@
 
        document.getElementById('chatbotToggle').addEventListener('click', function () {
     const iframe = document.getElementById('chatbotFrame');
-    iframe.classList.toggle('hidden'); // toggle visibility
+    iframe.classList.toggle('hidden'); 
 });
 
 
-        // Sign out functionality
         document.getElementById('sign-out-btn').addEventListener('click', function() {
             window.location.href = 'index.html';
         });
 
-        // More courses toggle
+
         function toggleMoreCourses() {
             const moreCoursesBtn = document.getElementById('moreCoursesBtn');
-            const courseItems = document.querySelectorAll('.course-card'); // Select ALL course cards
+            const courseItems = document.querySelectorAll('.course-card');
             const initialVisibleCount = 6;
             let isExpanded = moreCoursesBtn.dataset.expanded === 'true';
 
             if (isExpanded) {
-                // Currently expanded, so collapse
+
                 courseItems.forEach((item, index) => {
                     if (index >= initialVisibleCount) {
-                        item.classList.add('hidden'); // Use Tailwind's 'hidden' class
+                        item.classList.add('hidden'); 
                     }
                 });
                 moreCoursesBtn.innerHTML = 'More Courses <i class="fas fa-chevron-down ml-2"></i>';
                 moreCoursesBtn.dataset.expanded = 'false';
             } else {
-                // Currently collapsed, so expand
+    
                 courseItems.forEach(item => {
                     item.classList.remove('hidden');
                 });
@@ -643,21 +641,20 @@
             }
         }
 
-        // Initialize courses visibility on load
+
         document.addEventListener('DOMContentLoaded', () => {
             const moreCoursesBtn = document.getElementById('moreCoursesBtn');
-            moreCoursesBtn.dataset.expanded = 'false'; // Set initial state
+            moreCoursesBtn.dataset.expanded = 'false';
             const courseItems = document.querySelectorAll('.course-card');
             const initialVisibleCount = 6;
 
             courseItems.forEach((item, index) => {
                 if (index >= initialVisibleCount) {
-                    item.classList.add('hidden'); // Hide courses beyond the first 6 initially
+                    item.classList.add('hidden'); 
                 }
             });
         });
 
-        // Payment modal functionality
         let currentCourse = '';
         let currentDemoCourse = '';
 
@@ -667,7 +664,6 @@
             const courseTitle = document.getElementById('courseTitle');
             const coursePrice = document.getElementById('coursePrice');
             
-            // Set course details based on selection
             switch(course) {
                 case 'web-development':
                     courseTitle.textContent = 'Web Development Masterclass';
@@ -748,7 +744,6 @@
             const demoTitle = document.getElementById('demoCourseTitle');
             const demoVideo = document.getElementById('demoVideo');
             
-            // Set demo details based on selection
             switch(course) {
                 case 'web-development':
                     demoTitle.textContent = 'Web Development Course Demo';
@@ -818,7 +813,6 @@
             document.getElementById('demoModal').classList.remove('active');
         }
 
-       // Close modals when clicking outside
 window.addEventListener('click', function(event) {
     const paymentModal = document.getElementById('paymentModal');
     const demoModal = document.getElementById('demoModal');
@@ -832,7 +826,6 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Listen for messages from chatbot.html iframe
 window.addEventListener('message', function (event) {
     if (event.data === 'closeChatbot') {
         const iframe = document.getElementById('chatbotFrame');

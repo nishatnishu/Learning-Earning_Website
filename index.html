@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silicon Cave</title>
+    <title>Silicon Cave🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -47,8 +47,13 @@
 <header class="bg-white shadow-sm py-3 px-6 md:px-12 fixed top-0 left-0 right-0 z-50 dark:bg-gray-800 dark:shadow-lg">
     <nav class="container mx-auto flex justify-between items-center">
 
-        <a href="#" class="text-3xl font-bold text-green-600">ScholarsGig🎓🕊️</a>
-
+       <div class="flex items-center h-full"> >
+            <a href="#" class="flex items-center h-full"> 
+                <img src="images/Silicon_Cave_logo.png" 
+                     alt="Silicon Cave Logo" 
+                  class="h-8 md:h-15 w-auto mr-">
+            </a>
+        </div>
         <ul class="hidden md:flex space-x-8 text-lg font-medium">
             <li><a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300 dark:text-blue-400 dark:hover:text-blue-300">Explore</a></li>
             <li><a href="#" class="text-purple-600 hover:text-purple-800 transition duration-300 dark:text-purple-400 dark:hover:text-purple-300">Become a Seller</a></li>
@@ -361,23 +366,20 @@
         const allCategoryCards = categoriesGrid.querySelectorAll('.group.relative');
         const seeMoreBtn = document.getElementById('seeMoreBtn');
 
-        // Assuming the first 8 cards are initially visible, and the next 3 are hidden
         const startIndexForHidden = 8; 
-        let isCurrentlyShowingMore = false; // Flag to track if we are currently showing all categories
+        let isCurrentlyShowingMore = false; 
 
-        // Check if the first hidden card is visible to determine current state
+    
         if (allCategoryCards[startIndexForHidden] && !allCategoryCards[startIndexForHidden].classList.contains('hidden')) {
             isCurrentlyShowingMore = true;
         }
 
         if (isCurrentlyShowingMore) {
-            // If currently showing all, hide the ones from startIndexForHidden onwards
             for (let i = startIndexForHidden; i < allCategoryCards.length; i++) {
                 allCategoryCards[i].classList.add('hidden');
             }
             seeMoreBtn.textContent = 'See More Categories';
         } else {
-            // If currently hiding some, show the ones from startIndexForHidden onwards
             for (let i = startIndexForHidden; i < allCategoryCards.length; i++) {
                 allCategoryCards[i].classList.remove('hidden');
             }
@@ -709,7 +711,7 @@
     <section class="py-16 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to find the perfect tech service?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Join thousands of businesses who found their ideal tech solutions on ScholarsGig🎓.</p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Join thousands of businesses who found their ideal tech solutions on Silicon Cave🎓.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button class="bg-white text-green-700 px-8 py-3 rounded-lg hover:bg-gray-100 transition duration-300 text-lg font-semibold shadow-lg">
                     Get Started
@@ -751,8 +753,8 @@
                 <ul class="space-y-2">
                     <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Help Center</a></li>
                     <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Trust & Safety</a></li>
-                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Selling on ScholarsGig🎓</a></li>
-                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Buying on ScholarsGig🎓</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Selling on Silicon Cave🎓</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Buying on Silicon Cave🎓</a></li>
                     <li><a href="#" class="hover:text-white transition duration-300 dark:hover:text-gray-100">Community Standards</a></li>
                 </ul>
             </div>
@@ -784,7 +786,7 @@
             </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm dark:border-gray-700 dark:text-gray-500">
-            &copy; 2025 ScholarsGig🎓 Inc. All rights reserved.
+            &copy; 2025 Silicon Cave🎓 Inc. All rights reserved.
         </div>
     </footer>
 
@@ -811,11 +813,9 @@
     </div>
 
     <script>
-        // Theme Toggle Logic
         const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement; // This refers to the <html> tag
+        const htmlElement = document.documentElement; 
 
-        // Check for saved theme preference on page load
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             htmlElement.classList.add('dark');
@@ -833,7 +833,6 @@
             }
         });
 
-        // Sample Gig Data (in a real app, this would come from a backend API)
         const gigs = [
             {
                 id: 1,
@@ -914,7 +913,7 @@
             gigs.forEach(gig => {
                 const card = document.createElement('div');
                 card.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden', 'cursor-pointer', 'gig-card', 'dark:bg-gray-700', 'dark:shadow-xl');
-                card.setAttribute('data-gig-id', gig.id); // Store gig ID for modal
+                card.setAttribute('data-gig-id', gig.id);
 
                 card.innerHTML = `
                     <img src="${gig.image}" alt="${gig.title}" class="w-full h-48 object-cover">
@@ -933,7 +932,6 @@
                 `;
                 gigCardsContainer.appendChild(card);
 
-                // Add click listener to each card to open modal
                 card.addEventListener('click', () => {
                     const selectedGig = gigs.find(g => g.id == card.getAttribute('data-gig-id'));
                     if (selectedGig) {
@@ -945,29 +943,26 @@
                         setTimeout(() => {
                             gigModal.querySelector('.bg-white').classList.remove('scale-95', 'opacity-0');
                             gigModal.querySelector('.bg-white').classList.add('scale-100', 'opacity-100');
-                        }, 10); // Small delay for transition
+                        }, 10); 
                     }
                 });
             });
         }
 
-        // Close modal functionality
+
         closeModalBtn.addEventListener('click', () => {
             gigModal.querySelector('.bg-white').classList.remove('scale-100', 'opacity-100');
             gigModal.querySelector('.bg-white').classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
                 gigModal.classList.add('hidden');
-            }, 300); // Match transition duration
+            }, 300);
         });
 
-        // Close modal if clicking outside the content
         gigModal.addEventListener('click', (event) => {
             if (event.target === gigModal.querySelector('.modal-overlay')) {
                 closeModalBtn.click();
             }
         });
-
-        // Initial render of gig cards when the page loads
         document.addEventListener('DOMContentLoaded', renderGigCards);
     </script>
 </body>

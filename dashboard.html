@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Dashboard | ScholarsGig🎓</title>
+    <title>Job Dashboard | Silicon Cave🎓</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,8 +29,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-green-600 dark:text-green-500">ScholarsGig🎓</span>
-                </div>
+                      <a href="#" class="flex items-center">
+                    <img src="images/Silicon_Cave_logo.png" 
+                         alt="Silicon Cave Logo" 
+                              class="h-8 md:h-15 w-auto mr-">
+                       </a>       
+                            </div>
                 <div class="flex items-center space-x-4">
                     <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
                         <i class="fas fa-moon dark:hidden"></i>
@@ -52,11 +56,14 @@
                 <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Welcome back, Nishat!</h1>
                 <p class="text-gray-600 dark:text-gray-300 mt-2">Find your next opportunity or continue learning</p>
             </div>
-            <div class="mt-4 md:mt-0">
-                <a href="learning_session.html" class="flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300 shadow-lg font-medium">
-                    <i class="fas fa-graduation-cap mr-2"></i> Start a Learning Session
-                </a>
-            </div>
+            <div class="mt-4 md:mt-0 flex flex-col sm:flex-row gap-4">
+    <a href="learning_session.html" class="flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300 shadow-lg font-medium">
+        <i class="fas fa-graduation-cap mr-2"></i> Start a Learning Session
+    </a>
+    <a href="Local_Platform.html" class="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg font-medium">
+        <i class="fas fa-store mr-2"></i> Local Platform (Offline/Online)
+    </a>
+</div>
         </div>
 
         <div class="mb-12 category-section">
@@ -109,7 +116,6 @@
 
     <!-- Job Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobsGrid">
-        <!-- Jobs will be loaded here by JavaScript -->
     </div>
 
     <!-- Load More Button -->
@@ -129,7 +135,7 @@
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-gray-500 dark:text-gray-400 text-sm">
-                &copy; 2023 ScholarsGig🎓. All rights reserved.
+                &copy; 2023 Silicon Cave🎓🎓. All rights reserved.
             </p>
         </div>
     </footer>

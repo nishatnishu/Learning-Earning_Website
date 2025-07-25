@@ -32,11 +32,43 @@ function addMessage(text, fromUser = true, isImage = false) {
   messageContent.className = 'message-content';
 
   if (isImage) {
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'image-preview-wrapper';
+    imageWrapper.style.position = 'relative';
+
     const img = document.createElement('img');
     img.src = text;
     img.alt = 'Uploaded image';
     img.className = 'image-preview';
-    messageContent.appendChild(img);
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.innerHTML = '×';
+    cancelBtn.setAttribute('aria-label', 'Cancel image');
+    cancelBtn.className = 'image-cancel-btn';
+    cancelBtn.style.position = 'absolute';
+    cancelBtn.style.top = '4px';
+    cancelBtn.style.right = '4px';
+    cancelBtn.style.background = '#00000088';
+    cancelBtn.style.color = '#fff';
+    cancelBtn.style.border = 'none';
+    cancelBtn.style.borderRadius = '50%';
+    cancelBtn.style.width = '24px';
+    cancelBtn.style.height = '24px';
+    cancelBtn.style.cursor = 'pointer';
+    cancelBtn.style.zIndex = '10';
+    cancelBtn.style.fontSize = '16px';
+    cancelBtn.style.lineHeight = '20px';
+
+    cancelBtn.addEventListener('click', () => {
+      uploadedImageBase64 = null;
+      uploadedImageMimeType = null;
+      imageUpload.value = '';
+      bubble.remove();
+    });
+
+    imageWrapper.appendChild(img);
+    imageWrapper.appendChild(cancelBtn);
+    messageContent.appendChild(imageWrapper);
   } else {
     const p = document.createElement('p');
     p.textContent = text;
@@ -49,6 +81,7 @@ function addMessage(text, fromUser = true, isImage = false) {
   messagesContainer.appendChild(bubble);
   messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: "smooth" });
 }
+
 
 function showTyping() {
   if (typingBubble) return; 
