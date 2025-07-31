@@ -729,13 +729,11 @@
             document.getElementById('paymentModal').classList.remove('active');
         }
 
-       function processPayment() {
-
-    alert('Payment processed successfully! You will be redirected to your premium courses.');
-
+ function processPayment() {
+    alert('Payment processed successfully! You will be redirected to your premium course.');
     hidePaymentModal();
     setTimeout(function() {
-        window.location.href = 'Premium_Courses.html';
+        window.location.href = `Premium_Courses.html?course=${currentCourse}`;
     }, 1000); 
 }
         function showCourseDemo(course) {

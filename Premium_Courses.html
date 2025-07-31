@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Courses | Silicon Cave🎓</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .course-section {
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail {
+            transition: transform 0.3s ease;
+        }
+        
+        .video-thumbnail:hover {
+            transform: scale(1.03);
+        }
+        
+        #chatbotFrame {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm">
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2" id="courseHeader">Premium Course</h1>
+            <p class="text-gray-600 dark:text-gray-300" id="courseDescription">Access your premium course materials</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4" id="courseTitle">Course Title</h2>
+                    <div class="aspect-w-16 aspect-h-9 mb-6">
+                        <iframe id="courseTrailer" class="w-full h-96 rounded-lg" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4" id="courseFullDescription">Full course description goes here.</p>
+                    
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span id="courseRating">4.8 (1.2k reviews)</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-users mr-1"></i>
+                            <span id="enrolledStudents">1,500 students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button id="joinLiveBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium">
+                            <i class="fas fa-video mr-2"></i>Join Live Session
+                        </button>
+                        <button onclick="toggleChatbot()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium">
+                            <i class="fas fa-robot mr-2"></i>Course Assistant
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Course Curriculum</h2>
+                    <div class="space-y-3" id="courseModules">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Your Mentor</h2>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img id="mentorImage" src="" alt="Mentor" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h3 class="font-medium text-gray-800 dark:text-white" id="mentorName">Mentor Name</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400" id="mentorTitle">Senior Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4" id="mentorBio">Mentor bio goes here.</p>
+                    <button id="scheduleMentorBtn" class="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium">
+                        <i class="fas fa-calendar-alt mr-2"></i>Schedule Session
+                    </button>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Resources</h2>
+                    <div class="space-y-3">
+                        <a href="#" onclick="showSyllabus()" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                            <i class="fas fa-file-pdf text-red-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Course Syllabus</span>
+                        </a>
+                        <a href="#" onclick="showCodeFiles()" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                            <i class="fas fa-file-code text-blue-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Starter Code Files</span>
+                        </a>
+                        <a href="#" onclick="showBooks()" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                            <i class="fas fa-book text-green-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Recommended Books</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Upcoming Sessions</h2>
+                    <div class="space-y-4" id="upcomingSessions">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <iframe id="chatbotFrame"
+        src="chatbot.html"
+        class="fixed bottom-6 right-6 w-96 h-[80vh] rounded-2xl shadow-lg border border-gray-300 dark:border-gray-700 hidden z-50"
+        style="z-index: 1000;"></iframe>
+
+    <div id="liveSessionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-4xl p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white" id="liveSessionTitle">Live Session</h3>
+                <button onclick="hideLiveSession()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="aspect-w-16 aspect-h-9 mb-4">
+                <iframe id="liveSessionFrame" class="w-full h-[70vh] rounded-lg" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">Live</span>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                        <i class="fas fa-comments mr-2"></i>Chat
+                    </button>
+                    <button class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                        <i class="fas fa-question-circle mr-2"></i>Ask Question
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resourceModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+         <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800" id="resourceModalTitle">Resource</h3>
+                <button onclick="hideResourceModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="max-h-[70vh] overflow-y-auto" id="resourceModalContent">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const courses = {
+            'web-development': {
+                title: 'Web Development Masterclass',
+                description: 'Master HTML, CSS, JavaScript and modern frameworks like React and Vue.js',
+                fullDescription: 'This comprehensive course will take you from beginner to advanced web developer. You\'ll learn the fundamentals of HTML, CSS, and JavaScript before moving on to modern frameworks like React and Vue.js. By the end, you\'ll be able to build responsive, interactive websites and web applications.',
+                trailer: 'https://www.youtube.com/embed/pQN-pnXPaVg',
+                rating: '4.8 (1.2k reviews)',
+                students: '15,000',
+                mentor: {
+                    name: 'Sarah Johnson',
+                    title: 'Senior Web Developer',
+                    bio: '10+ years of experience building web applications for Fortune 500 companies. Specializes in React and Node.js.',
+                    image: 'https://randomuser.me/api/portraits/women/44.jpg'
+                },
+                modules: [
+                    {
+                        title: 'HTML Fundamentals',
+                        videos: [
+                            { title: 'Introduction to HTML', duration: '15:20', url: 'https://www.youtube.com/embed/example1' },
+                            { title: 'HTML Document Structure', duration: '12:45', url: 'https://www.youtube.com/embed/example2' },
+                            { title: 'Forms and Inputs', duration: '18:30', url: 'https://www.youtube.com/embed/example3' }
+                        ]
+                    },
+                    {
+                        title: 'CSS Styling',
+                        videos: [
+                            { title: 'CSS Selectors', duration: '14:15', url: 'https://www.youtube.com/embed/example4' },
+                            { title: 'Flexbox Layout', duration: '22:10', url: 'https://www.youtube.com/embed/example5' },
+                            { title: 'CSS Grid', duration: '25:40', url: 'https://www.youtube.com/embed/example6' }
+                        ]
+                    }
+                ],
+                liveSessions: [
+                    { title: 'React Hooks Deep Dive', date: 'Tomorrow, 3:00 PM', url: 'https://zoom.us/example1' },
+                    { title: 'Building a Full Stack App', date: 'Friday, 1:00 PM', url: 'https://zoom.us/example2' }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('course') || 'web-development';
+            
+            if (courseId && courses[courseId]) {
+                loadCourse(courses[courseId]);
+            } else {
+                window.location.href = 'learning_session.html';
+            }
+        });
+
+        function loadCourse(course) {
+            document.getElementById('courseHeader').textContent = course.title;
+            document.getElementById('courseDescription').textContent = course.description;
+            document.getElementById('courseTitle').textContent = course.title;
+            document.getElementById('courseFullDescription').textContent = course.fullDescription;
+            document.getElementById('courseRating').textContent = course.rating;
+            document.getElementById('enrolledStudents').textContent = course.students;
+            document.getElementById('courseTrailer').src = course.trailer;
+            
+            document.getElementById('mentorName').textContent = course.mentor.name;
+            document.getElementById('mentorTitle').textContent = course.mentor.title;
+            document.getElementById('mentorBio').textContent = course.mentor.bio;
+            document.getElementById('mentorImage').src = course.mentor.image;
+            
+            const modulesContainer = document.getElementById('courseModules');
+            modulesContainer.innerHTML = '';
+            
+            course.modules.forEach(module => {
+                const moduleElement = document.createElement('div');
+                moduleElement.className = 'border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden';
+                
+                const moduleHeader = document.createElement('div');
+                moduleHeader.className = 'bg-gray-50 dark:bg-gray-700 p-4 flex justify-between items-center cursor-pointer';
+                moduleHeader.innerHTML = `
+                    <h3 class="font-medium text-gray-800 dark:text-white">${module.title}</h3>
+                    <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                `;
+                
+                const moduleContent = document.createElement('div');
+                moduleContent.className = 'hidden bg-white dark:bg-gray-800';
+                
+                module.videos.forEach(video => {
+                    const videoElement = document.createElement('a');
+                    videoElement.href = '#';
+                    videoElement.className = 'block p-4 border-t border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition flex justify-between items-center';
+                    videoElement.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas fa-play-circle text-red-500 mr-3"></i>
+                            <span class="text-gray-700 dark:text-gray-300">${video.title}</span>
+                        </div>
+                        <span class="text-sm text-gray-500">${video.duration}</span>
+                    `;
+                    videoElement.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        playVideo(video.url, video.title);
+                    });
+                    moduleContent.appendChild(videoElement);
+                });
+                
+                moduleHeader.addEventListener('click', () => {
+                    moduleContent.classList.toggle('hidden');
+                    const icon = moduleHeader.querySelector('i');
+                    icon.classList.toggle('rotate-180');
+                });
+                
+                moduleElement.appendChild(moduleHeader);
+                moduleElement.appendChild(moduleContent);
+                modulesContainer.appendChild(moduleElement);
+            });
+            
+            const sessionsContainer = document.getElementById('upcomingSessions');
+            sessionsContainer.innerHTML = '';
+            
+            course.liveSessions.forEach(session => {
+                const sessionElement = document.createElement('div');
+                sessionElement.className = 'p-4 border border-gray-200 dark:border-gray-700 rounded-lg';
+                sessionElement.innerHTML = `
+                    <h3 class="font-medium text-gray-800 dark:text-white mb-1">${session.title}</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">${session.date}</p>
+                    <button onclick="joinLiveSession('${session.url}', '${session.title}')" class="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                        <i class="fas fa-calendar-plus mr-2"></i>Add to Calendar
+                    </button>
+                `;
+                sessionsContainer.appendChild(sessionElement);
+            });
+        }
+
+        function showSyllabus() {
+            document.getElementById('resourceModalTitle').textContent = 'Course Syllabus';
+            document.getElementById('resourceModalContent').innerHTML = `
+               <h4 class="text-lg font-semibold mb-3 text-gray-800">Web Development Masterclass Syllabus</h4>
+<div class="space-y-4">
+    <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+        <h5 class="font-medium text-blue-800">Week 1: HTML Fundamentals</h5>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-sm text-gray-700">
+            <li>HTML Document Structure</li>
+            <li>Text Formatting and Semantic HTML</li>
+            <li>Forms and Input Elements</li>
+        </ul>
+    </div>
+    <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+        <h5 class="font-medium text-purple-800">Week 2: CSS Styling</h5>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-sm text-gray-700">
+            <li>CSS Selectors and Specificity</li>
+            <li>Flexbox and Grid Layouts</li>
+            <li>Responsive Design Principles</li>
+        </ul>
+    </div>
+    <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+        <h5 class="font-medium text-green-800">Week 3: JavaScript Basics</h5>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-sm text-gray-700">
+            <li>Variables and Data Types</li>
+            <li>Functions and Scope</li>
+            <li>DOM Manipulation</li>
+        </ul>
+    </div>
+</div>
+            `;
+            document.getElementById('resourceModal').classList.remove('hidden');
+        }
+
+      function showCodeFiles() {
+    document.getElementById('resourceModalTitle').textContent = 'Starter Code Files';
+    document.getElementById('resourceModalContent').innerHTML = `
+        <div class="space-y-4">
+            <div>
+                <h5 class="font-medium mb-2">HTML Starter Files</h5>
+                <pre class="bg-blue-50 p-4 rounded-lg overflow-x-auto text-sm"><code class="text-gray-800">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Starter Template&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            <div>
+                <h5 class="font-medium mb-2">CSS Starter File</h5>
+                <pre class="bg-blue-50 p-4 rounded-lg overflow-x-auto text-sm"><code class="text-gray-800">body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}</code></pre>
+            </div>
+        </div>
+    `;
+    document.getElementById('resourceModal').classList.remove('hidden');
+}
+        function showBooks() {
+            document.getElementById('resourceModalTitle').textContent = 'Recommended Books';
+            document.getElementById('resourceModalContent').innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                        <img src="https://m.media-amazon.com/images/I/41T5H8u7fUL._SY425_.jpg" alt="Eloquent JavaScript" class="h-40 mx-auto mb-3">
+                        <h5 class="font-medium text-center">Eloquent JavaScript</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">By Marijn Haverbeke</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                        <img src="https://external-preview.redd.it/rfe57QZGnefoFaILdw3riS-A2zgvIvR3LMT7YPxMO68.jpg?width=1080&crop=smart&auto=webp&s=130a37f41ce0e0a3f88a4e11a478edaaa85ecc1a">
+                        <h5 class="font-medium text-center">You Don't Know JS</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">By Kyle Simpson</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                        <img src="https://m.media-amazon.com/images/I/51WIKlio9qL._SY425_.jpg" alt="HTML and CSS" class="h-40 mx-auto mb-3">
+                        <h5 class="font-medium text-center">HTML and CSS: Design and Build Websites</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">By Jon Duckett</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkud0OOiF07K8VGRmcGaE0HXdGwbxmKoNrkg&s">
+                        <h5 class="font-medium text-center">React: Up & Running</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center">By Stoyan Stefanov</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('resourceModal').classList.remove('hidden');
+        }
+
+        function hideResourceModal() {
+            document.getElementById('resourceModal').classList.add('hidden');
+        }
+
+        function playVideo(url, title) {
+            alert(`Playing: ${title}\nURL: ${url}`);
+        }
+
+        function joinLiveSession(url, title) {
+            document.getElementById('liveSessionTitle').textContent = title;
+            document.getElementById('liveSessionFrame').src = url;
+            document.getElementById('liveSessionModal').classList.remove('hidden');
+        }
+
+        function hideLiveSession() {
+            document.getElementById('liveSessionFrame').src = '';
+            document.getElementById('liveSessionModal').classList.add('hidden');
+        }
+
+        function toggleChatbot() {
+            document.getElementById('chatbotFrame').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
